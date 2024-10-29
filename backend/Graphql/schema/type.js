@@ -12,4 +12,8 @@ const user = gql`
     id: String!
     book_id: String!
   }
+  type favorites(userId: $userId) {
+    bookId
+    addedDate
+  }
 `
