@@ -25,11 +25,7 @@ const UserQueryDefs = gql`
 
 
 module.exports = {
-    UserQueryDefs,
-    AdminUserQueryDefs,
-    BookQueryDefs,
-    BorrowQueryDefs
-
+    UserQueryDefs
 }
 
 

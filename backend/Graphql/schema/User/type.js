@@ -15,7 +15,7 @@ const User = gql`
 
 
 const Book = gql`
-  type book{
+  type Book{
     bookId: String!
     bookName: String!
     bookAuthor: String!
@@ -36,7 +36,7 @@ const ReadingHistory = gql`
 `
 
 const UserBorrowRecord=gql`
-  type borrowRecord{
+  type UserBorrowRecord{
     userId: String!
     borrowId: String!
     bookId: String!
@@ -46,7 +46,7 @@ const UserBorrowRecord=gql`
 
 
 const FavoriteBook = gql`
-  type favoriteBook{
+  type FavoriteBook{
     favoriteId:String!
     userId: String!
     bookId: String!
@@ -58,6 +58,5 @@ module.exports = {
   Book,
   UserBorrowRecord,
   ReadingHistory,
-  FavoriteBook,
-  AdminUser
+  FavoriteBook
 }

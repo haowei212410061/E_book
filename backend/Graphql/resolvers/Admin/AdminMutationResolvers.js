@@ -1,10 +1,10 @@
 
 
-const AdminMutationresolvers = {
+const AdminMutationResolvers = {
     Mutation:{
         createAdminUser: async(parent,{adminid,username,password,email},{db})=>{
             try{
-                let res = await db.query('INSERT INTO adminUser (adminid,username,password,email) VALUES ($1,$2,$3,$4) RETURNING *', [adminid, username, password, email])
+                let res = await db.query('INSERT INTO adminuser (adminid,username,password,email) VALUES ($1,$2,$3,$4) RETURNING *', [adminid, username, password, email])
                 return res.rows[0]
             }catch(error){
                 console.log("error:",error)
@@ -13,14 +13,14 @@ const AdminMutationresolvers = {
         },
         updateAdminUser: async(parent,{adminid,username,pasword,email},{db})=>{
             try{
-                let res = await db.query('UPDATE adminUser SET username = $1, email = $2, wallet = $4 WHERE id = $3 RETURNING *',[adminid,username,pasword, email])
+                let res = await db.query('UPDATE adminuser SET username = $1, email = $2, wallet = $4 WHERE id = $3 RETURNING *',[adminid,username,pasword, email])
                 return res.rows[0]
 
             }catch(error){
                 console.log("error:",error)
             }
         },
-        deleterAdminUser: async(parent,{adminid},{db})=>{
+        deleteAdminUser: async(parent,{adminid},{db})=>{
             try {
                 let res = await db.qery('DELETE FROM adminUser WHERE id = $1 RETURNING *', [adminid])
                 return res.rows[0]
@@ -37,11 +37,6 @@ const AdminMutationresolvers = {
             }
         }
     }
-
-
-
 }
 
-module.exports = {
-    AdminMutationresolvers
-}
+module.exports = AdminMutationResolvers

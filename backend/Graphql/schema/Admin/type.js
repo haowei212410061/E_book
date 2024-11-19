@@ -11,7 +11,7 @@ const AdminUser = gql`
   }
 `
 const BookDetail = gql`
-  type book{
+  type BookDetail{
     bookId: String!
     bookName: String!
     bookAuthor: String!
@@ -31,7 +31,7 @@ const ReadingHistory = gql`
 `
 
 const BorrowRecord=gql`
-  type borrowRecord{
+  type BorrowRecord{
     userId: String!
     borrowId: String!
     bookId: String!

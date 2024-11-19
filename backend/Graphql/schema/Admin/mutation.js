@@ -1,8 +1,8 @@
 const { gql } = require("apollo-server-express");
-const { AdminUserUser, BookDetail } = require("./type");
+const { AdminUser, BookDetail } = require("./type");
 
 const MutationTypeDefs = gql`
-  ${AdminUserUser}
+  ${AdminUser}
   ${BookDetail}
 
   type Mutation {
@@ -11,14 +11,14 @@ const MutationTypeDefs = gql`
       username: String!
       password: String!
       email: String!
-    ): AdminUserUser
+    ): AdminUser
     updateAdminUser(
       adminid: String!
       username: String!
       password: String!
       email: String!
-    ): AdminUserUser
-    deleteAdminUser(adminid: String!): AdminUserUser
+    ): AdminUser
+    deleteAdminUser(adminid: String!): AdminUser
 
     createBook(
       bookId: String!

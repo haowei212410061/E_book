@@ -3,7 +3,7 @@ const AdminQueryResolvers = {
     Query:{
         Users:async (parent,{db})=>{
             try{
-                let res = await db.query('SELECT * FROM User')
+                let res = await db.query('SELECT * FROM user')
                 return res.rows[0]
             }catch(error){
                 console.log("error:",error)
@@ -11,7 +11,7 @@ const AdminQueryResolvers = {
         },
         SingleUser:async (parent,{userid,email},{db})=>{
             try{
-                let res = await db.query('SELECT * FROM User WHERE userid = $1 OR email = $2',[userid,email])
+                let res = await db.query('SELECT * FROM user WHERE userid = $1 OR email = $2',[userid,email])
                 return res.rows[0]
             }catch(error){
                 console.log("error: User not found",error)
@@ -19,7 +19,7 @@ const AdminQueryResolvers = {
         },
         AdminUsers:async (parent,{db})=>{
             try{
-                let res = await db.query('SELECT * FROM adminUser')
+                let res = await db.query('SELECT * FROM adminuser')
                 return res.rows[0]
 
             }catch(error){
@@ -28,7 +28,7 @@ const AdminQueryResolvers = {
         },
         SingleAdminUser:async (parent,{adminid},{db})=>{
             try{
-                let res = await db.query('SELECT * FROM adminUser WHERE admin = $1',[adminid]);
+                let res = await db.query('SELECT * FROM adminuser WHERE admin = $1',[adminid]);
                 return res.rows[0]
             }catch(error){
                 console.log("error:",error)
@@ -52,7 +52,7 @@ const AdminQueryResolvers = {
         },
         BorrowRecords:async (parent,{userid,bookid},{db})=>{
             try{
-                let res = await db.query('SELECT * FROM borrowRecord')
+                let res = await db.query('SELECT * FROM borrowrecord')
                 return res.rows[0]
             }catch(error){
                 console.log("error:",error)
@@ -60,7 +60,7 @@ const AdminQueryResolvers = {
         },
         SingleBorrowRecord:async (parent,{userid,bookid},{db})=>{
             try{
-                let res = await db.query('SELECT * FROM borrowRecord WHERE userid = $1 OR bookid = $2',[userid,bookid]);
+                let res = await db.query('SELECT * FROM borrowrecord WHERE userid = $1 OR bookid = $2',[userid,bookid]);
                 return res.rows[0]
             }catch(error){
                 console.log("error:",error)
@@ -70,4 +70,4 @@ const AdminQueryResolvers = {
     },
 }
 
-module.exports = {AdminQueryResolvers}
+module.exports = AdminQueryResolvers
