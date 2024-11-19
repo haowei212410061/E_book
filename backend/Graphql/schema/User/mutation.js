@@ -19,10 +19,6 @@ const MutationTypeDefs = gql`
         updateUser(userid:String!,username:String!,password:String!,email:String!,wallet:Int!):User
         deleteUser(userid:String!):User
 
-        createBook(bookId: String!,bookName: String!,bookAuthor: String!, productionDate: String!, borrowStatus: String! , borrowCount: Int!):Book
-        updateBook(bookId: String!,bookName: String!,bookAuthor: String!, productionDate: String!, borrowStatue: String! , borrowCount: Int!):Book
-        deleteBook(bookId: String!):Book
-
         createReadingHistory(historyId:String!, bookId:String!,userId:String!, readDate:String!):Book
         updateReadingHistory(historyId:String!, bookId:String!,userId:String!, readDate:String!):Book
         deleteReadingHistory(historyId:String!):Book
