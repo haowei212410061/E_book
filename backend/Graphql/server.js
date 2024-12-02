@@ -18,12 +18,13 @@ const resolvers = merge(
 
 
 function ConnectDatabase(){
+
   CLOUD_POSTGRES.connect().then(()=>{
-    console.log("connect to cloud postgreSQL")
-  }).catch(error=>{
-    console.log("error:",error)
-    console.log("fail to connect to cloud postgreSQL")
+    console.log('Connection to postgreSQL successfully')
+  }).catch((err)=>{
+    console.log('Connection to postgreSQL fail please check db',err)
   })
+  
 }
 ConnectDatabase();
 
@@ -32,7 +33,9 @@ async function startServer() {
   const server = new ApolloServer({
     typeDefs: [typeDefs],
     resolvers: resolvers,
-    context: ({ req }) => ({ CLOUD_POSTGRES }),
+    context: ({ req }) => ({ 
+      db:CLOUD_POSTGRES 
+    }),
   })
 
   await server.start()
