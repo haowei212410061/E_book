@@ -19,6 +19,7 @@ const BookDetail = gql`
     borrowStatus: String!
     borrowCount: Int!
     bookCategory: String!
+    bookImage:String!
   } 
 `
 const ReadingHistory = gql`
@@ -30,7 +31,7 @@ const ReadingHistory = gql`
   }
 `
 
-const BorrowRecord=gql`
+const BorrowRecord = gql`
   type BorrowRecord{
     userId: String!
     borrowId: String!
