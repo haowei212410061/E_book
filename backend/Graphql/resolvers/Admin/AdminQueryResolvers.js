@@ -1,16 +1,16 @@
 const AdminQueryResolvers = {
     Query: {
-        Users: async (parent, { db }) => {
+        Users: async (parent,args, { db }) => {
             try {
-                let res = await db.query('SELECT * FROM "user"')
+                let res = await db.query('SELECT * FROM "Users"')
                 return res.rows
             } catch (error) {
                 console.log("error:", error)
             }
         },
-        SingleUser: async (parent, { userid, email }, { db }) => {
+        SingleUser: async (parent, { email, password }, { db }) => {
             try {
-                let res = await db.query('SELECT * FROM "user" WHERE userid = $1 OR email = $2', [userid, email])
+                let res = await db.query('SELECT * FROM "Users" WHERE email = $1 AND password = $2', [email, password])
                 return res.rows[0]
             } catch (error) {
                 console.log("error: User not found", error)
@@ -19,14 +19,13 @@ const AdminQueryResolvers = {
         AdminUsers: async (parent, args, { db }) => {
             try {
                 let res = await db.query('SELECT * FROM "AdminUser"')
-                console.log(res)
                 return res.rows
 
             } catch (error) {
                 console.log("error:", error)
             }
         },
-        SingleAdminUser: async (parent, args, { adminid }, { db }) => {
+        SingleAdminUser: async (parent, { adminid }, { db }) => {
             try {
                 let res = await db.query('SELECT * FROM "AdminUser" WHERE adminid = $1', [adminid]);
                 return res.rows[0]
@@ -36,15 +35,17 @@ const AdminQueryResolvers = {
         },
         Books: async (parent, args, { db }) => {
             try {
-                let res = await db.query('SELECT * FROM "bookdetails"');
+                let res = await db.query('SELECT * FROM "BookDetails"');
+                console.log(res.rows)
                 return res.rows
             } catch (error) {
                 console.log("error:", error)
             }
         },
-        SingleBook: async (parent, { column, info }, { db }) => {
+        SingleBook: async (parent, {column,info }, { db }) => {
             try {
-                let res = await db.query('SELECT * FROM "bookdetails" WHERE $2 = $1', [info, column]);
+                let res = await db.query(`SELECT * FROM "BookDetails" WHERE ${column} = $1`, [info]);
+                console.log(res.rows)
                 return res.rows[0]
             } catch (error) {
                 console.log("error:", error)
@@ -52,7 +53,7 @@ const AdminQueryResolvers = {
         },
         BorrowRecords: async (parent, args, { db }) => {
             try {
-                let res = await db.query('SELECT * FROM "borrowrecord"')
+                let res = await db.query('SELECT * FROM "BorrowRecord"')
                 return res.rows
             } catch (error) {
                 console.log("error:", error)
@@ -60,7 +61,7 @@ const AdminQueryResolvers = {
         },
         SingleBorrowRecord: async (parent, { userid, bookid }, { db }) => {
             try {
-                let res = await db.query('SELECT * FROM "borrowrecord" WHERE userid = $1 OR bookid = $2', [userid, bookid]);
+                let res = await db.query('SELECT * FROM "BorrowRecord" WHERE userid = $1 OR bookid = $2', [userid, bookid]);
                 return res.rows[0]
             } catch (error) {
                 console.log("error:", error)

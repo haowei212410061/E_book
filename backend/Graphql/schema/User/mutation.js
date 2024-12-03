@@ -23,7 +23,7 @@ const MutationTypeDefs = gql`
         updateReadingHistory(historyId:String!, bookId:String!,userId:String!, readDate:String!):Book
         deleteReadingHistory(historyId:String!):Book
 
-        createUserBorrowRecord(userId:String!,borrowId:String!,bookId:String!,borrowDate:String!):UserBorrowRecord
+        createUserBorrowRecord(userid:String!,borrowid:String!,bookid:String!,borrowdate:String!):UserBorrowRecord
         
         createUserFavoriteBook(userId:String!,bookId:String!):FavoriteBook
         DeleteUserFavoriteBook(favoriteId:String!):FavoriteBook

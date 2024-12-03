@@ -21,27 +21,27 @@ const MutationTypeDefs = gql`
     deleteAdminUser(adminid: String!): AdminUser
 
     createBook(
-      bookId: String!
-      bookName: String!
-      bookAuthor: String!
-      productionDate: String!
-      borrowStatus: String!
-      borrowCount: Int!
-      bookCategory: String!
+      bookid: String!
+      bookname: String!
+      bookauthor: String!
+      productiondate: String!
+      bookstatus: String!
+      borrowcount: Int!
+      bookcategory: String!
+      bookimage: String!
     ): BookDetail
     updateBook(
-      bookId: String!
-      bookName: String!
-      bookAuthor: String!
-      productionDate: String!
-      borrowStatue: String!
-      borrowCount: Int!
-      bookCategory: String!
+      bookid: String!
+      bookname: String!
+      bookauthor: String!
+      productiondate: String!
+      bookstatus: String!
+      borrowcount: Int!
+      bookcategory: String!
+      bookimage: String!
     ): BookDetail
-    deleteBook(bookId: String!): BookDetail
+    deleteBook(bookid: String!): BookDetail
   }
-
-
 `;
 
 module.exports = {

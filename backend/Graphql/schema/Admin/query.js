@@ -9,16 +9,16 @@ const UserQueryDefs = gql`
   ${BorrowRecord}
   type Query {
     Users: [User]
-    SingleUser(userid: String, email: String): User
+    SingleUser(email: String, password: String): User
 
     AdminUsers: [AdminUser]
     SingleAdminUser(adminid: String!): AdminUser
 
-    Books: [BookDetail]
-    SingleBook(column: String!, info: String!): BookDetail
+    Books: [BookDetail!]!
+    SingleBook(column:String!,info: String!): BookDetail
 
     BorrowRecords: [BorrowRecord]
-    SingleBorrowRecord(userid: String, bookId: String): BorrowRecord
+    SingleBorrowRecord(userid: String, bookid: String): BorrowRecord
   }
 `;
 

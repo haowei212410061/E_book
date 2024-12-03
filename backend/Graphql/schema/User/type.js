@@ -37,19 +37,19 @@ const ReadingHistory = gql`
 
 const UserBorrowRecord=gql`
   type UserBorrowRecord{
-    userId: String!
-    borrowId: String!
-    bookId: String!
-    borrowDate: String!  
+    userid: String!
+    borrowid: String!
+    bookid: String!
+    borrowdate: String!  
   }
   `
 
 
 const FavoriteBook = gql`
   type FavoriteBook{
-    favoriteId:String!
-    userId: String!
-    bookId: String!
+    favoritid:String!
+    userid: String!
+    bookid: String!
   }
 `
 

@@ -12,31 +12,31 @@ const AdminUser = gql`
 `
 const BookDetail = gql`
   type BookDetail{
-    bookId: String!
-    bookName: String!
-    bookAuthor: String!
-    productionDate: String!
-    borrowStatus: String!
-    borrowCount: Int!
-    bookCategory: String!
-    bookImage:String!
+    bookid: String!
+    bookname: String!
+    bookauthor: String!
+    productiondate: String!
+    bookstatus: String!
+    borrowcount: Int!
+    bookcategory: String!
+    bookimage:String!
   } 
 `
 const ReadingHistory = gql`
   type ReadingHistory{
-    historyId: String!
-    bookId: String!
-    userId: String!
-    readDate: String!
+    historyid: String!
+    bookid: String!
+    userid: String!
+    readdate: String!
   }
 `
 
 const BorrowRecord = gql`
   type BorrowRecord{
-    userId: String!
-    borrowId: String!
-    bookId: String!
-    borrowDate: String!  
+    borrowid: String!
+    userid: String!
+    bookid: String!
+    borrowdate: String!  
   }
   `
 
