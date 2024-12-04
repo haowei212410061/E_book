@@ -7,13 +7,15 @@ const { UserTypeDefs } = require("./schema/User/mergeTypeDefs");
 const { AdminTypeDefs } = require("./schema/Admin/mergeTypeDefs");
 const AdminMutationResolvers = require('./resolvers/Admin/AdminMutationResolvers')
 const AdminQueryResolvers = require('./resolvers/Admin/AdminQueryResolvers')
-const UserResolvers = require('./resolvers/User/UserMutationResolvers');
+const UserMutationResolvers = require('./resolvers/User/UserMutationResolvers');
+const UserQueryResolvers = require('./resolvers/User/UserQueryResolvers');
 const app = express()
 const typeDefs = mergeTypeDefs([UserTypeDefs, AdminTypeDefs])
 const resolvers = merge(
   AdminMutationResolvers,
   AdminQueryResolvers,
-  UserResolvers
+  UserMutationResolvers,
+  UserQueryResolvers
 )
 
 

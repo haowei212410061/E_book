@@ -9,9 +9,18 @@ const AdminMutationResolvers = {
             }
 
         },
-        updateAdminUser: async (parent, { adminid, username, pasword, email }, { db }) => {
+        updateAdminUserPassword: async (parent, { adminid, newPassword }, { db }) => {
             try {
-                let res = await db.query('UPDATE "AdminUser" SET username = $1, email = $2, wallet = $4 WHERE id = $3 RETURNING *', [adminid, username, pasword, email])
+                let res = await db.query('UPDATE "AdminUser" SET password = $2 WHERE userid = $1 RETURNING *', [adminid, newPassword])
+                return res.rows[0]
+
+            } catch (error) {
+                console.log("error:", error)
+            }
+        },
+        updateAdminUserEmail: async (parent, { adminid, newEmail }, { db }) => {
+            try {
+                let res = await db.query('UPDATE "AdminUser" SET email = $2 WHERE userid = $1 RETURNING *', [adminid, newEmail])
                 return res.rows[0]
 
             } catch (error) {
@@ -20,88 +29,45 @@ const AdminMutationResolvers = {
         },
         deleteAdminUser: async (parent, { adminid }, { db }) => {
             try {
-                let res = await db.qery('DELETE FROM "AdminUser" WHERE id = $1 RETURNING *', [adminid])
+                let res = await db.qery('DELETE FROM "AdminUser" WHERE adminid = $1 RETURNING *', [adminid])
                 return res.rows[0]
             } catch (error) {
                 console.log("error:", error);
             }
         },
-        createBook: async (parent, { bookid, bookName, bookAuthor, productionDate, borrowStatus, borrowCount, bookCategory }, { db }) => {
+        createBook: async (parent, { bookid, bookname, bookauthor, productiondate, borrowstatus, borrowcount, bookcategory, bookimage }, { db }) => {
             try {
-                let res = await db.query('INSERT INTO "bookdetails" (bookid,bookname,bookauthor,productionDate,borrowstatus,borrowcount,bookCategory) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURING *', [bookid, bookName, bookAuthor, productionDate, borrowStatus, borrowCount, bookCategory])
+                let res = await db.query('INSERT INTO "BookDetails" (bookid, bookname, bookauthor, productiondate, borrowstatus, borrowcount, bookcategory,bookimage) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURING *', [bookid, bookname, bookauthor, productiondate, borrowstatus, borrowcount, bookcategory, bookimage])
                 return res.rows[0]
             } catch (error) {
                 console.log("fail to create book:", error)
             }
+        },
+        updateBookStatus: async (parent, { bookid, bookstatus }, { db }) => {
+            try {
+                let res = await db.query('UPDATE "BookDetails" SET bookstatus = $2 WHERE bookid = $1 RETURNING *', [bookid, bookstatus])
+                return res.rows[0]
+            } catch (error) {
+                console.log('fail to update book status:', error)
+            }
+        },
+        updateBookBorrowCount: async (parent, { bookid, borrowcount }, { db }) => {
+            try {
+                let res = await db.query('UPDATE "BookDetails" SET borrowcount = $2 WHERE bookid = $1 RETURNING *', [bookid, borrowcount])
+                return res.rows[0]
+            } catch (error) {
+                console.log('fail to update book status:', error)
+            }
+        },
+        deleteBook: async (parent, { bookid }, { db }) => {
+            try {
+                let res = await db.query('DELETE FROM "BookDetails" WHERE bookid = $1 RETURNING *', [bookid])
+            } catch (error) {
+                console.log('fail to delete book:', error)
+            }
         }
-    },
-    Query: {
-        Users: async (parent, { db }) => {
-            try {
-                let res = await db.query('SELECT * FROM "user"')
-                return res.rows[0]
-            } catch (error) {
-                console.log("error:", error)
-            }
-        },
-        SingleUser: async (parent, { userid, email }, { db }) => {
-            try {
-                let res = await db.query('SELECT * FROM "user" WHERE userid = $1 OR email = $2', [userid, email])
-                return res.rows[0]
-            } catch (error) {
-                console.log("error: User not found", error)
-            }
-        },
-        AdminUsers: async (parent, { db }) => {
-            try {
-                let res = await db.query('SELECT * FROM "AdminUser"')
-                return res.rows[0]
 
-            } catch (error) {
-                console.log("error:", error)
-            }
-        },
-        SingleAdminUser: async (parent, { adminid }, { db }) => {
-            try {
-                let res = await db.query('SELECT * FROM "AdminUser" WHERE adminid = $1', [adminid]);
-                return res.rows[0]
-            } catch (error) {
-                console.log("error:", error)
-            }
-        },
-        Books: async (parent, args, { db }) => {
-            try {
-                let res = await db.query('SELECT * FROM "bookdetails"');
-                return res.rows[0]
-            } catch (error) {
-                console.log("error:", error)
-            }
-        },
-        SingleBook: async (parent, { column, info }, { db }) => {
-            try {
-                let res = await db.query('SELECT * FROM "bookdetails" WHERE $2 = $1', [info, column]);
-                return res.rows[0]
-            } catch (error) {
-                console.log("error:", error)
-            }
-        },
-        BorrowRecords: async (parent, { userid, bookid }, { db }) => {
-            try {
-                let res = await db.query('SELECT * FROM "borrowrecord"')
-                return res.rows[0]
-            } catch (error) {
-                console.log("error:", error)
-            }
-        },
-        SingleBorrowRecord: async (parent, { userid, bookid }, { db }) => {
-            try {
-                let res = await db.query('SELECT * FROM "borrowrecord" WHERE userid = $1 OR bookid = $2', [userid, bookid]);
-                return res.rows[0]
-            } catch (error) {
-                console.log("error:", error)
-            }
-        }
-    }
+    },
 }
 
 module.exports = AdminMutationResolvers

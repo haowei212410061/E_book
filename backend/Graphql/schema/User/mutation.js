@@ -16,18 +16,18 @@ const MutationTypeDefs = gql`
     
     type Mutation {
         createUser(userid:String!,username:String!,password:String!,email:String!,wallet:Int!):User
-        updateUser(userid:String!,username:String!,password:String!,email:String!,wallet:Int!):User
+        updateUserPassword(userid:String!,newPassword:String!):User
+        updateUserWallet(userid:String!,wallet:Int!):User
         deleteUser(userid:String!):User
 
-        createReadingHistory(historyId:String!, bookId:String!,userId:String!, readDate:String!):Book
-        updateReadingHistory(historyId:String!, bookId:String!,userId:String!, readDate:String!):Book
-        deleteReadingHistory(historyId:String!):Book
+        createReadingHistory(historyid:String!, bookid:String!,userid:String!, readdate:String!):ReadingHistory
+        deleteReadingHistory(historyid:String!):ReadingHistory
 
         createUserBorrowRecord(userid:String!,borrowid:String!,bookid:String!,borrowdate:String!):UserBorrowRecord
         
-        createUserFavoriteBook(userId:String!,bookId:String!):FavoriteBook
-        DeleteUserFavoriteBook(favoriteId:String!):FavoriteBook
+        createUserFavoriteBook(favoriteid:String!,userid:String!,bookid:String!):FavoriteBook
+        deleteUserFavoriteBook(favoriteid:String!):FavoriteBook
     }
     
 `
-module.exports = {MutationTypeDefs}
+module.exports = { MutationTypeDefs }

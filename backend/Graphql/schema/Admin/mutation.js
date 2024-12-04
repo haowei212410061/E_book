@@ -12,12 +12,8 @@ const MutationTypeDefs = gql`
       password: String!
       email: String!
     ): AdminUser
-    updateAdminUser(
-      adminid: String!
-      username: String!
-      password: String!
-      email: String!
-    ): AdminUser
+    updateAdminUserPassword(adminid: String!, newPassword: String!): AdminUser
+    updateAdminUserEmail(adminid: String!, newEmail: String!): AdminUser
     deleteAdminUser(adminid: String!): AdminUser
 
     createBook(
@@ -30,16 +26,16 @@ const MutationTypeDefs = gql`
       bookcategory: String!
       bookimage: String!
     ): BookDetail
-    updateBook(
+    
+    updateBookStatus(
       bookid: String!
-      bookname: String!
-      bookauthor: String!
-      productiondate: String!
-      bookstatus: String!
-      borrowcount: Int!
-      bookcategory: String!
-      bookimage: String!
+      bookstatus:String!
     ): BookDetail
+
+    updateBookBorrowCount(
+      bookid:String!
+      borrowcount:Int!
+    ):BookDetail
     deleteBook(bookid: String!): BookDetail
   }
 `;
