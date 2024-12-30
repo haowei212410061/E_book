@@ -33,7 +33,7 @@ const AdminQueryResolvers = {
                 console.log("error:", error)
             }
         },
-        Books: async (parent, args, { db }) => {
+        AdminBooks: async (parent, args, { db }) => {
             try {
                 let res = await db.query('SELECT * FROM "BookDetails"');
                 console.log(res.rows)

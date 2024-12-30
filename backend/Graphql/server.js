@@ -38,6 +38,15 @@ async function startServer() {
     context: () => ({
       db: CLOUD_POSTGRES
     }),
+
+    //處理apollo error的返回格式 
+    formatError:(error)=>{
+      return {
+        message: error.message,
+        code: error.extensions.code || "INTERNAL_SERVER_ERROR",
+        path: error.path
+    };
+    }
   })
 
   await server.start()

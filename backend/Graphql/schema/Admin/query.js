@@ -14,7 +14,7 @@ const UserQueryDefs = gql`
     AdminUsers: [AdminUser]
     SingleAdminUser(adminid: String!): AdminUser
 
-    Books: [BookDetail!]!
+    AdminBooks: [BookDetail!]!
     SingleBook(column:String!,info: String!): BookDetail
 
     BorrowRecords: [BorrowRecord]

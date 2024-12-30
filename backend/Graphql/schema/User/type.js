@@ -8,21 +8,37 @@ const User = gql`
     email: String!
     wallet: Int!
   }
-
 `
 
 
+const UsersResponse = gql`
+  type UsersResponse {
+    status:Int!
+    message:String!
+    data:[User]!
+  }
+`
 
 
-const Book = gql`
-  type Book{
-    bookId: String!
-    bookName: String!
-    bookAuthor: String!
-    productionDate: String!
-    borrowStatus: String!
-    borrowCount: Int!
+const BookDetail = gql`
+  type BookDetail{
+    bookid: String!
+    bookname: String!
+    bookauthor: String!
+    productiondate: String!
+    bookstatus: String!
+    borrowcount: Int!
+    bookcategory: String!
+    bookimage:String!
   } 
+`
+
+const BooksResponse = gql`
+  type BooksResponse {
+    status:Int!
+    message:String!
+    data:[BookDetail]!
+  }
 `
 
 
@@ -35,6 +51,14 @@ const ReadingHistory = gql`
   }
 `
 
+const ReadingHistorysResponse = gql`
+  type ReadingHistorysResponse{
+    status:Int!
+    message:String!
+    data:[ReadingHistory]!
+  }
+`
+
 const UserBorrowRecord = gql`
   type UserBorrowRecord{
     userid: String!
@@ -43,6 +67,14 @@ const UserBorrowRecord = gql`
     borrowdate: String!  
   }
   `
+
+const UserBorrowRecordsResponse = gql`
+  type UserBorrowRecordsResponse{
+    status:Int!
+    message:String!
+    data:[UserBorrowRecord]!
+  }
+`
 
 
 const FavoriteBook = gql`
@@ -53,10 +85,23 @@ const FavoriteBook = gql`
   }
 `
 
+const FavoriteBooksResponse = gql`
+  type FavoriteBooksResponse {
+    status:Int!
+    message:String!
+    data:[FavoriteBook]!
+  }
+`
+
 module.exports = {
   User,
-  Book,
+  BookDetail,
   UserBorrowRecord,
   ReadingHistory,
-  FavoriteBook
+  FavoriteBook,
+  UsersResponse,
+  BooksResponse,
+  ReadingHistorysResponse,
+  UserBorrowRecordsResponse,
+  FavoriteBooksResponse
 }

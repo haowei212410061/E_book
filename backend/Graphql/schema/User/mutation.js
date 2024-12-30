@@ -1,32 +1,40 @@
 const { gql } = require("apollo-server-express");
 const {
   User,
-  Book,
+  BookDetail,
   ReadingHistory,
+  ReadingHistorysResponse,
   UserBorrowRecord,
+  UserBorrowRecordsResponse,
   FavoriteBook,
+  FavoriteBooksResponse,
+  UsersResponse,
 } = require("./type");
 
 const MutationTypeDefs = gql`
     ${User}
-    ${Book}
+    ${BookDetail}
     ${ReadingHistory}
+    ${ReadingHistorysResponse}
     ${UserBorrowRecord}
+    ${UserBorrowRecordsResponse}
     ${FavoriteBook}
+    ${FavoriteBooksResponse}
+    ${UsersResponse}
     
     type Mutation {
-        createUser(userid:String!,username:String!,password:String!,email:String!,wallet:Int!):User
-        updateUserPassword(userid:String!,newPassword:String!):User
-        updateUserWallet(userid:String!,wallet:Int!):User
-        deleteUser(userid:String!):User
+        createUser(userid:String!,username:String!,password:String!,email:String!,wallet:Int!):UsersResponse
+        updateUserPassword(userid:String!,newPassword:String!):UsersResponse
+        updateUserWallet(userid:String!,wallet:Int!):UsersResponse
+        deleteUser(userid:String!):UsersResponse
 
-        createReadingHistory(historyid:String!, bookid:String!,userid:String!, readdate:String!):ReadingHistory
-        deleteReadingHistory(historyid:String!):ReadingHistory
+        createReadingHistory(historyid:String!, bookid:String!,userid:String!, readdate:String!):ReadingHistorysResponse
+        deleteReadingHistory(historyid:String!):ReadingHistorysResponse
 
-        createUserBorrowRecord(userid:String!,borrowid:String!,bookid:String!,borrowdate:String!):UserBorrowRecord
+        createUserBorrowRecord(userid:String!,borrowid:String!,bookid:String!,borrowdate:String!):UserBorrowRecordsResponse
         
-        createUserFavoriteBook(favoriteid:String!,userid:String!,bookid:String!):FavoriteBook
-        deleteUserFavoriteBook(favoriteid:String!):FavoriteBook
+        createUserFavoriteBook(favoriteid:String!,userid:String!,bookid:String!):FavoriteBooksResponse
+        deleteUserFavoriteBook(favoriteid:String!):FavoriteBooksResponse
     }
     
 `
