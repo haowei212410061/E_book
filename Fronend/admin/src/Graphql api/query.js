@@ -97,3 +97,66 @@ export const GET_ALL_READING_HISTORY = gql`
 `;
 
 //userweb query
+
+export const GET_BOOK_WITH_USERWEB = gql`
+  query getBookWithUserWeb($bookname: String!) {
+    books(bookname: $bookname) {
+      status
+      message
+      data {
+        bookid
+        bookname
+        bookauthor
+        productiondate
+        bookstatus
+        borrowcount
+        bookcategory
+        bookimage
+      }
+    }
+  }
+`;
+
+export const GET_USER_BORROW_RECORDS = gql`
+  query getUserBorrowRecords($userid: String!) {
+    UserBorrowRecords(userid: $userid) {
+      status
+      message
+      data {
+        userid
+        borrowid
+        bookid
+        borrowdate
+      }
+    }
+  }
+`;
+
+export const GET_USER_READING_HISTORYS = gql`
+  query getUserReadingHistory($userid: String!) {
+    ReadingHistory(userid: $userid) {
+      status
+      message
+      data {
+        historyid
+        bookid
+        userid
+        readdate
+      }
+    }
+  }
+`;
+
+export const GET_USER_FAVORITE_BOOK = gql`
+  query getUserFavoriteBook($userid: String!) {
+    FavoriteBooks(userid: $userid) {
+      status
+      message
+      data {
+        favoriteid
+        userid
+        bookid
+      }
+    }
+  }
+`;
