@@ -1,4 +1,4 @@
-const { CLOUD_POSTGRES } = require("./postgres_setting")
+const { CLOUD_POSTGRES } = require("./postgreSQL_setting")
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { mergeTypeDefs } = require("@graphql-tools/merge");
@@ -54,8 +54,8 @@ async function startServer() {
 
   server.applyMiddleware({ app })
 
-  app.listen({ port: 4000 }, () => {
-    console.log(`erver ready at http://localhost:4000${server.graphqlPath}`)
+  app.listen({ port: 4200 }, () => {
+    console.log(`erver ready at http://localhost:4200${server.graphqlPath}`)
   })
 }
 startServer();

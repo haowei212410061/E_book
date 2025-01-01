@@ -1,5 +1,6 @@
 const { gql } = require("apollo-server-express");
 const {
+  SingleUser,
   BookDetail,
   ReadingHistory,
   UserBorrowRecord,
@@ -11,6 +12,7 @@ const {
 } = require("./type");
 
 const QueryTypeDefs = gql`
+  ${SingleUser}
   ${BookDetail}
   ${ReadingHistory}
   ${UserBorrowRecord}
@@ -21,6 +23,7 @@ const QueryTypeDefs = gql`
   ${FavoriteBooksResponse}
 
   type Query {
+    UserLogin(email:String!,password:String!):SingleUser
     Books(bookname: String!): BooksResponse
     UserBorrowRecords(userid: String!): UserBorrowRecordsResponse
     ReadingHistorys(userid: String!): ReadingHistorysResponse

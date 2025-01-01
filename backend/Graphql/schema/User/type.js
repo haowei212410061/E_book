@@ -9,7 +9,15 @@ const User = gql`
     wallet: Int!
   }
 `
+const SingleUser = gql`
+  type SingleUser{
+    status:Int!
+    message:String!
+    data:User
+    jwt:String!
+  }
 
+`
 
 const UsersResponse = gql`
   type UsersResponse {
@@ -95,6 +103,7 @@ const FavoriteBooksResponse = gql`
 
 module.exports = {
   User,
+  SingleUser,
   BookDetail,
   UserBorrowRecord,
   ReadingHistory,

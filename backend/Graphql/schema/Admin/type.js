@@ -10,8 +10,25 @@ const AdminUser = gql`
     email: String!
   }
 `
-const BookDetail = gql`
-  type BookDetail{
+const AdminUserLoginResponse = gql`
+  type AdminUserLoginResponse{
+    status:Int!
+    message:String!
+    data:AdminUser
+    jwt:String!
+  }
+`
+
+const AdminUserResponse = gql`
+  type AdminUserResponse{
+    status:Int!
+    message:String!
+    data:[AdminUser]!
+  }
+`
+
+const AdminBookDetail = gql`
+  type AdminBookDetail{
     bookid: String!
     bookname: String!
     bookauthor: String!
@@ -22,8 +39,16 @@ const BookDetail = gql`
     bookimage:String!
   } 
 `
-const ReadingHistory = gql`
-  type ReadingHistory{
+const AdminBookDetailResponse = gql`
+  type AdminBookDetailResponse{
+    status:Int!
+    message:String!
+    data:[AdminBookDetail]!
+  }
+`
+
+const AdminReadingHistory = gql`
+  type AdminReadingHistory{
     historyid: String!
     bookid: String!
     userid: String!
@@ -31,8 +56,16 @@ const ReadingHistory = gql`
   }
 `
 
-const BorrowRecord = gql`
-  type BorrowRecord{
+const AdminReadingHistoryResponse = gql`
+  type AdminReadingHistoryResponse{
+    status:Int!
+    message:String!
+    data:[AdminReadingHistory]!
+  }
+`
+
+const AdminBorrowRecord = gql`
+  type AdminBorrowRecord{
     borrowid: String!
     userid: String!
     bookid: String!
@@ -40,11 +73,21 @@ const BorrowRecord = gql`
   }
   `
 
-
-
+const AdminBorrowRecordsResponse = gql`
+  type AdminBorrowRecordsResponse{
+    status:Int!
+    message:String!
+    data:[AdminBorrowRecord]!
+  }
+`
 module.exports = {
-  BookDetail,
-  BorrowRecord,
-  ReadingHistory,
-  AdminUser
+  AdminUser,
+  AdminUserLoginResponse,
+  AdminUserResponse,
+  AdminBookDetail,
+  AdminBookDetailResponse,
+  AdminBorrowRecord,
+  AdminBorrowRecordsResponse,
+  AdminReadingHistory,
+  AdminReadingHistoryResponse,
 }

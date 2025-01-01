@@ -1,24 +1,29 @@
 const { gql } = require("apollo-server-express");
 const { User } = require('../User/type')
-const { AdminUser, BookDetail, BorrowRecord } = require('./type')
+const { AdminUser,AdminUserLoginResponse,AdminUserResponse, AdminBookDetail,AdminBookDetailResponse, AdminBorrowRecord,AdminBorrowRecordsResponse } = require('./type')
 
 const UserQueryDefs = gql`
   ${User}
   ${AdminUser}
-  ${BookDetail}
-  ${BorrowRecord}
+  ${AdminUserLoginResponse}
+  ${AdminUserResponse}
+  ${AdminBookDetail}
+  ${AdminBookDetailResponse}
+  ${AdminBorrowRecord}
+  ${AdminBorrowRecordsResponse}
   type Query {
+    
     Users: [User]
-    SingleUser(email: String, password: String): User
+    SingleUser(email: String): User
 
-    AdminUsers: [AdminUser]
-    SingleAdminUser(adminid: String!): AdminUser
+    AdminUsers: AdminUserResponse
+    SingleAdminUser(adminid: String!): AdminUserResponse
 
-    AdminBooks: [BookDetail!]!
-    SingleBook(column:String!,info: String!): BookDetail
+    AdminBooks: AdminBookDetailResponse
+    SingleBook(column:String!,info: String!): AdminBookDetailResponse
 
-    BorrowRecords: [BorrowRecord]
-    SingleBorrowRecord(userid: String, bookid: String): BorrowRecord
+    BorrowRecords:AdminBorrowRecordsResponse
+    SingleBorrowRecord(userid: String, bookid: String): AdminBorrowRecordsResponse
   }
 `;
 

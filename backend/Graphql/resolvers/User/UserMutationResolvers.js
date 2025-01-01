@@ -5,6 +5,9 @@ const UserMutationResolvers = {
     Mutation: {
         createUser: async (parent, { userid, username, password, email, wallet }, { db }) => {
             try {
+                const verifyEmail = await db.query('SELECT * FROM "Users" WHERE email = $1',[email])
+                console.log(verifyEmail.rows)
+                
                 const res = await db.query('INSERT INTO "Users" (userid,username,password,email,wallet) VALUES ($1,$2,$3,$4,$5) RETURNING *', [userid, username, password, email, wallet])
                 console.log(res)
                 return {

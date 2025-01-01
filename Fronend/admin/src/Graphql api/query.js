@@ -1,102 +1,149 @@
-import { gql } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
 //admin query
-export const GET_ALL_ADMIN_USER = gql`
-  query getAllAdminUser {
-    AdminUsers {
-      adminid
+
+
+export const GET_ALL_USERS_WITH_ADMIN = gql`
+  query getAllUsersWithAdmin{
+    Users{
+      userid
       username
       password
       email
+      wallet
+    }
+  }
+`
+export const GET_SINGLE_USER_WITH_ADMIN = gql`
+  query getSingleUserWithAdmin($email:String!){
+    SingleUser(email:$email){
+      userid
+      username
+      password
+      email
+      wallet
+    }
+  }
+
+
+`
+
+export const GET_ALL_ADMIN_USER = gql`
+  query getAllAdminUser {
+    AdminUsers {
+      status
+      message
+      data {
+        adminid
+        username
+        password
+        email
+      }
     }
   }
 `;
 export const GET_SINGLE_ADMIN_USER = gql`
-  query getSingleAdminUser($email: String!, $password: String!) {
-    SingleAdminUser(email: $email, password: $password) {
-      adminid
-      username
-      password
-      email
+  query getSingleAdminUser($email: String!) {
+    SingleAdminUser(email: $email) {
+      status
+      message
+      data {
+        adminid
+        username
+        password
+        email
+      }
     }
   }
 `;
 
-export const GET_ALL_BOOK = gql`
-  query getAllBook {
-    Books {
-      bookid
-      bookname
-      bookauthor
-      productiondate
-      bookstatus
-      borrowcount
-      bookcategory
-      bookimage
+export const GET_ALL_BOOK_WITH_ADMIN = gql`
+  query getAllBookfWithAdmin {
+    AdminBooks {
+      status
+      message
+      data {
+        bookid
+        bookname
+        bookauthor
+        productiondate
+        bookstatus
+        borrowcount
+        bookcategory
+        bookimage
+      }
     }
   }
 `;
 
-export const GET_SINGLE_BOOK = gql`
-  query getSingleBook($column: String!, $info: String!) {
+export const GET_SINGLE_BOOK_WITH_ADMIN = gql`
+  query getSingleBookWithAdmin($column: String!, $info: String!) {
     SingleBook(column: $column, info: $info) {
-      bookid
-      bookname
-      bookauthor
-      productiondate
-      bookstatus
-      borrowcount
-      bookcategory
-      bookimage
+      status
+      message
+      data {
+        bookid
+        bookname
+        bookauthor
+        productiondate
+        bookstatus
+        borrowcount
+        bookcategory
+        bookimage
+      }
     }
   }
 `;
 
-export const GET_ALL_BORROW_RECORD = gql`
-  query getAllBorrowRecord {
+export const GET_ALL_BORROW_RECORD_WITH_ADMIN = gql`
+  query getAllBorrowRecordWithAdmin {
     BorrowRecords {
-      borrowid
-      userid
-      bookid
-      borrowdate
+      status
+      message
+      data {
+        borrowid
+        userid
+        bookid
+        borrowdate
+      }
     }
   }
 `;
 
-export const GET_SINGLE_BORROW_RECORD = gql`
-         query getSingleBorrowRecord($userid:String!,bookid:String!){
-                  SingleBorrowRecord(userid:$userid,bookid:$bookid){
-                           borrowid
-                           userid
-                           bookid
-                           borrowdate
-                  }
-         }
-
-`;
-
-export const GET_ALL_FAVORITE_BOOK = gql`
-  query getAllFavoriteBook {
-    FavoriteBooks {
-      favoriteid
-      userid
-      bookid
+export const GET_SINGLE_BORROW_RECORDS_WITH_ADMIN = gql`
+  query getSingleBorrowRecordsWithAdmin($userid: String!, $bookid: String!) {
+    SingleBorrowRecord(userid: $userid, bookid: $bookid) {
+      status
+      message
+      data {
+        borrowid
+        userid
+        bookid
+        borrowdate
+      }
     }
   }
 `;
 
-export const GET_ALL_READING_HISTORY = gql`
-  query getAllReadingHistory {
-    ReadingHistorys {
-      historyid
-      userid
-      bookid
-      readdate
-    }
-  }
-`;
 
 //userweb query
+
+export const USER_LOGIN = gql`
+  query userLogin($email:String!,$password:String!){
+    UserLogin(email:$email,password:$password){
+      status
+      message
+      data{
+        userid
+        username
+        email
+        password
+        wallet
+      }
+      jwt    
+    }
+  }
+`;
 
 export const GET_BOOK_WITH_USERWEB = gql`
   query getBookWithUserWeb($bookname: String!) {
