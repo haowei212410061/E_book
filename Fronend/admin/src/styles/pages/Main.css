@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap");
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+html,
+body {
+  width: 104%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto+Sans+JP", sans-serif;
+}
+
+.admin_main_container {
+  position: relative;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(197, 197, 206);
+}
+.admin_main_container .navbar {
+  position: relative;
+  left: 10px;
+  display: grid;
+  grid-template-rows: 0.5fr 4.5fr;
+  width: 400px;
+  height: 100%;
+  background-color: 1;
+}
+.admin_main_container .navbar .user {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.232);
+}
+.admin_main_container .navbar .user .image {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  width: 121px;
+  height: 100%;
+}
+.admin_main_container .navbar .user .image img {
+  width: 50%;
+  height: 50%;
+}
+.admin_main_container .navbar .user .user_info {
+  width: 70%;
+  height: 100%;
+  display: grid;
+  text-align: start;
+  font-size: 12px;
+  grid-template-rows: 1fr 1fr;
+}
+.admin_main_container .navbar .user .user_info h4 {
+  position: relative;
+  top: 17px;
+}
+.admin_main_container .navbar .user .user_info p {
+  position: relative;
+  bottom: 10px;
+}
+.admin_main_container .navbar .menu {
+  display: grid;
+  position: relative;
+  width: 80%;
+  height: 70%;
+  gap: 5px;
+}
+.admin_main_container .navbar .menu .list {
+  align-items: center;
+  display: grid;
+  width: 100%;
+  height: 120px;
+}
+.admin_main_container .navbar .menu .list h4 {
+  position: relative;
+  top: 20px;
+  font-size: 14px;
+  color: rgba(138, 138, 159, 0.971);
+}
+.admin_main_container .navbar .menu .list ul {
+  display: grid;
+  width: 100%;
+  gap: 15px;
+  padding-left: 0;
+  list-style: none;
+  font-family: "Noto+Sans+JP", sans-serif;
+}
+.admin_main_container .navbar .menu .list ul li {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: rgb(71, 69, 69);
+}
+.admin_main_container .navbar .menu .list ul li:hover {
+  cursor: pointer;
+  width: 80%;
+  text-align: center;
+  padding-left: 5px;
+  padding-top: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px 5px 5px 5px;
+}
+.admin_main_container .main_content {
+  position: relative;
+  top: 20px;
+  right: 10px;
+  width: 90%;
+  height: 95%;
+  background-color: white;
+  border-radius: 8px 8px 8px 8px;
+}
+.admin_main_container .main_content .page_title {
+  color: rgba(45, 45, 52, 0.971);
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.232);
+}
+.admin_main_container .main_content .page_title h3 {
+  padding-left: 20px;
+  font-family: "Roboto", sans-serif;
+}
+.admin_main_container .main_content .filter {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  gap: 40px;
+  justify-items: center;
+  align-items: center;
+}
+.admin_main_container .main_content .filter .column p {
+  font-size: 12px;
+}
+.admin_main_container .main_content .filter .column #book_column {
+  width: 160px;
+  height: 30px;
+  background-color: rgb(255, 252, 252);
+  border: none;
+}
+.admin_main_container .main_content .filter .column #book_column option {
+  text-align: center;
+}
+.admin_main_container .main_content .filter .search_section {
+  position: relative;
+  left: 20px;
+}
+.admin_main_container .main_content .filter .search_section p {
+  font-size: 12px;
+}
+.admin_main_container .main_content .filter .search_section .search_btn {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  background-color: rgb(255, 252, 252);
+  border: none;
+  z-index: 10;
+}
+.admin_main_container .main_content .filter .search_section .search_btn:hover {
+  cursor: pointer;
+  color: blue;
+}
+.admin_main_container .main_content .filter .search_section .search {
+  position: relative;
+  width: 200px;
+  height: 30px;
+  z-index: 3;
+  background-color: rgb(255, 252, 252);
+  border-radius: 0px 5px 5px 0px;
+  border: none;
+}
+.admin_main_container .main_content .filter .search_section .search::placeholder {
+  text-align: center;
+}
+.admin_main_container .main_content .data {
+  width: 1200px;
+  height: 400px;
+  margin-left: 20px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.admin_main_container .main_content .data .table_head {
+  width: 95%;
+  height: 40px;
+  background-color: rgb(197, 197, 206);
+}
+.admin_main_container .main_content .data .table_head .column {
+  width: 90%;
+  display: flex;
+  gap: 15px;
+  margin-left: 10px;
+  justify-content: space-between;
+}
+.admin_main_container .main_content .data .table_head .column .bookid {
+  text-align: center;
+  padding-right: 40px;
+  width: 70px;
+  height: 40px;
+  margin-top: 10px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head .column .bookname {
+  width: 100px;
+  height: 40px;
+  padding-right: 80px;
+  margin-top: 10px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head .column .bookauthor {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  margin-top: 10px;
+  color: white;
+  padding-right: 50px;
+}
+.admin_main_container .main_content .data .table_head .column .productiondate {
+  text-align: center;
+  width: 155px;
+  height: 40px;
+  margin-top: 10px;
+  color: white;
+  padding-right: 40px;
+}
+.admin_main_container .main_content .data .table_head .column .bookstatus {
+  width: 100px;
+  height: 40px;
+  padding-right: 30px;
+  margin-top: 10px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head .column .borrowcount {
+  width: 60px;
+  height: 40px;
+  padding-right: 55px;
+  margin-top: 10px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head .column .bookcategory {
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  padding-right: 40px;
+}
+.admin_main_container .main_content .data .table_head .column .bookimage {
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  padding-right: 50px;
+}
+.admin_main_container .main_content .data .table_body {
+  width: 1200px;
+  height: 100%;
+  margin-top: 20px;
+  vertical-align: auto;
+  gap: 10px;
+}
+.admin_main_container .main_content .data .table_body .info {
+  display: flex;
+  width: 1200px;
+  height: 35px;
+  gap: 10px;
+  border-left: 1px solid rgba(236, 236, 236, 0.474);
+  border-right: 1px solid rgba(236, 236, 236, 0.489);
+  border-bottom: 2px solid rgba(236, 236, 236, 0.933);
+  border-radius: 0px 0px 5px 5px;
+}
+.admin_main_container .main_content .data .table_body .info .bookId {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+}
+.admin_main_container .main_content .data .table_body .info .bookName {
+  text-align: left;
+  font-size: 14px;
+  width: 200px;
+  height: 30px;
+}
+.admin_main_container .main_content .data .table_body .info .bookAuthor {
+  text-align: left;
+  padding-right: 40px;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+}
+.admin_main_container .main_content .data .table_body .info .productionDate {
+  width: 155px;
+  height: 30px;
+  font-size: 14px;
+}
+.admin_main_container .main_content .data .table_body .info .bookStatus {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  padding-right: 50px;
+}
+.admin_main_container .main_content .data .table_body .info .borrowCount {
+  text-align: center;
+  width: 60px;
+  height: 30px;
+  font-size: 14px;
+  padding-right: 50px;
+}
+.admin_main_container .main_content .data .table_body .info .bookCategory {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  padding-right: 65px;
+}
+.admin_main_container .main_content .data .table_body .info .Image {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  padding-right: 50px;
+}
+.admin_main_container .main_content .buttons {
+  margin-left: 550px;
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+.admin_main_container .main_content .buttons button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(230, 230, 230);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .buttons button:hover {
+  cursor: pointer;
+  background-color: rgb(68, 68, 68);
+}
+
+/*# sourceMappingURL=Main.css.map */

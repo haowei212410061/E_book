@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import "../styles/Login.css";
+import "../styles/pages/Login.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from "react-router-dom";
 import {useMutation} from "@apollo/client";
 import { ADMIN_USER_LOGIN } from "../Graphql api/mutation";
 //useMutation = 需要手動觸發 例如按鈕點擊觸法
 //useQuery = 在組件渲染時會自動觸發。通常，當元件首次載入或任何其依賴項（例如，輸入變數）發生變更時，您可以使用它來取得資料
-
+let token;
 function Login() {
   const [adminUserLogin] = useMutation(ADMIN_USER_LOGIN);
   const NavigateToMainWeb = useNavigate();
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
+  
   useEffect(() => {
     console.log({
       account: account,
@@ -39,7 +40,8 @@ function Login() {
           password: password,
         },
       });
-      console.log(data)
+      token = data.AdminUserLogin.jwt;
+      console.log(data,token)
       NavigateToMainWeb('/main')
     }catch(error){
       console.log(error)
