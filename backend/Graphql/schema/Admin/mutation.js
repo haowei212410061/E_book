@@ -9,7 +9,6 @@ const MutationTypeDefs = gql`
 
   type Mutation {
     AdminUserLogin(email:String!,password:String!):AdminUserLoginResponse
-
     createAdminUser(
       adminid: String!
       username: String!
@@ -41,6 +40,8 @@ const MutationTypeDefs = gql`
       borrowcount:Int!
     ):AdminBookDetailResponse
     deleteBook(bookid: String!): AdminBookDetailResponse
+
+    SingleBook(column:String!,info: String!): AdminBookDetailResponse
   }
 `;
 

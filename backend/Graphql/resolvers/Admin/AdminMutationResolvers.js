@@ -84,6 +84,18 @@ const AdminMutationResolvers = {
                 throw new ApolloError(`fail to delete admin user ${error}`)
             }
         },
+        SingleBook: async (parent, {column,info }, { db }) => {
+            try {
+                const res = await db.query(`SELECT * FROM "BookDetails" WHERE ${column} = $1`, [info]);
+                return {
+                    status:200,
+                    message:"query single books successfully",
+                    data:res.rows,
+                 }
+            } catch (error) {
+                throw new ApolloError('fail to query books')
+            }
+        },
         createBook: async (parent, { bookid, bookname, bookauthor, productiondate, bookstatus, borrowcount, bookcategory, bookimage }, { db }) => {
             try {
                 const res = await db.query('INSERT INTO "BookDetails" (bookid, bookname, bookauthor, productiondate, bookstatus, borrowcount, bookcategory,bookimage) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *', [bookid, bookname, bookauthor, productiondate, bookstatus, borrowcount, bookcategory, bookimage])

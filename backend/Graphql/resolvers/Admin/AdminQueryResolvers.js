@@ -1,4 +1,5 @@
 const { ApolloError } = require("apollo-server-express")
+const { json } = require("express")
 const AdminQueryResolvers = {
     Query: {
         Users: async (parent,args, { db }) => {
@@ -54,18 +55,7 @@ const AdminQueryResolvers = {
                 throw new ApolloError('fail to query books')
             }
         },
-        SingleBook: async (parent, {column,info }, { db }) => {
-            try {
-                const res = await db.query(`SELECT * FROM "BookDetails" WHERE ${column} = $1`, [info]);
-                return {
-                    status:200,
-                    message:"query single books successfully",
-                    data:res.rows,
-                 }
-            } catch (error) {
-                throw new ApolloError('fail to query books')
-            }
-        },
+        
         BorrowRecords: async (parent, args, { db }) => {
             try {
                 const res = await db.query('SELECT * FROM "BorrowRecord"')

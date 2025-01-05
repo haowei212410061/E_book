@@ -76,25 +76,6 @@ export const GET_ALL_BOOK_WITH_ADMIN = gql`
   }
 `;
 
-export const GET_SINGLE_BOOK_WITH_ADMIN = gql`
-  query getSingleBookWithAdmin($column: String!, $info: String!) {
-    SingleBook(column: $column, info: $info) {
-      status
-      message
-      data {
-        bookid
-        bookname
-        bookauthor
-        productiondate
-        bookstatus
-        borrowcount
-        bookcategory
-        bookimage
-      }
-    }
-  }
-`;
-
 export const GET_ALL_BORROW_RECORD_WITH_ADMIN = gql`
   query getAllBorrowRecordWithAdmin {
     BorrowRecords {

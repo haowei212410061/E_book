@@ -20,8 +20,7 @@ const UserQueryDefs = gql`
     SingleAdminUser(adminid: String!): AdminUserResponse
 
     AdminBooks: AdminBookDetailResponse
-    SingleBook(column:String!,info: String!): AdminBookDetailResponse
-
+  
     BorrowRecords:AdminBorrowRecordsResponse
     SingleBorrowRecord(userid: String, bookid: String): AdminBorrowRecordsResponse
   }

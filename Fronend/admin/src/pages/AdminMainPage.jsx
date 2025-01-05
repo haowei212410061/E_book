@@ -1,157 +1,135 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/global style/global.css";
 import "../styles/pages/Main.css";
 import adminUserImage from "../assets/Admin.png";
-import { bookData } from "../../../../backend/Graphql/Data/Book";
-import {useQuery} from '@apollo/client'
-import {GET_ALL_BOOK_WITH_ADMIN} from "../Graphql api/query"
-import ColumnTitle from "../components/ColumnTitle";
-import BookList from "../components/BookList";
-function AdminMainPage({ adminUserEmail, adminUserName }) {
-  const { loading, error, data } = useQuery(GET_ALL_BOOK_WITH_ADMIN);
-  const response = data?.AdminBooks?.data || []; // Safely access the response
-  const navigate = useNavigate();
-  const [pageNumber, setPageNumber] = useState(0);
+import { useQuery ,useMutation} from "@apollo/client";
+import { GET_ALL_BOOK_WITH_ADMIN } from "../Graphql api/query";
+import { GET_SINGLE_BOOK_WITH_ADMIN } from "../Graphql api/mutation";
+import ColumnTitle from "../components/UI/ColumnTitle";
+import BookList from "../components/UI/BookList";
+import Navbar from "../components/Navbar";
+import AdminTitle from "../components/UI/AdminTitle";
+import Filter from "../components/Filter";
+import ControlPageBtn from "../components/UI/ControlPageBtn";
+function getUserLocalStorage(){
+  const user = JSON.parse(localStorage.getItem("UserLogin"));
+  return {username:user.data.username,email:user.data.email}
+}
 
-  useEffect(() => {
-    console.log(data)
-  }, [data]); 
+function AdminMainPage() {
+  const { loading, error, data } = useQuery(GET_ALL_BOOK_WITH_ADMIN);
+  const response = data?.AdminBooks?.data || [];
+  const [books, setBooks] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [column, setColumn] = useState("bookname");
+  const [input, setInput] = useState("");
+  const user = getUserLocalStorage();
+  const [getSingleBookWithAdmin] = useMutation(GET_SINGLE_BOOK_WITH_ADMIN)
+  const [buttonDisable,setButtonDisable] = useState(true)
+  const [displayWindow,setDisplayWindow] = useState('none')
+
+  useEffect(()=>{
+    isDisabled();
+    const time = setTimeout(()=>{
+      //要先讓數據加載進來
+      setBooks(response)
+    },500)
+    return ()=>clearTimeout(time)
+  },[response,buttonDisable])
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) return <div>Error: {error.message}</div>;
+  
+  function selectFunc(event) {
+    const column = event.target.value;
+    setColumn(column);
+  }
+
+  function isDisabled(){
+    if(books.length === 0){
+      setButtonDisable(false)
+    }else{
+      setButtonDisable(true)
+    }
+  }
+
+  function addEditChangeListener(event) {
+    const userInput = event.target.value;
+    console.log(userInput);
+    setInput(userInput);
+  }
 
   function addPageNumber() {
+    if(books.length === 0){
+      setButtonDisable(false)
+    }
     const newCount = pageNumber + 10;
-    if (newCount < response.length) {
+    if (newCount < books.length) {
       setPageNumber(newCount);
     }
   }
   function reducePageNumber() {
+    if(books.length === 0){
+      setButtonDisable(false)
+    }
     const newCount = pageNumber - 10;
     if (newCount >= 0) {
       setPageNumber(newCount);
     }
   }
-  if (loading) return <div>Loading...</div>; // Show loading state while data is fetching
-  if (error) return <div>Error: {error.message}</div>; // Show error state if there's an error
 
+  async function getSingleBook(column,info){
+    try{
+      if(input.length === 0){
+        toast.warning("有必要欄位未輸入")
+      }else{
+        const {data} = await getSingleBookWithAdmin({
+          variables:{
+            column:column,
+            info:info
+          }
+        })
+        const res = data.SingleBook.data   
+        if(res.length === 0){
+          setBooks([])
+          toast.error('No data')
+        }else{
+          setBooks(res)
+          console.log(res)
+        }
+      }
+    }catch(error){
+      console.log(error)
+      toast.warning('fail to fetch single book')
+    }
+  }
   
-  
-  
+
   return (
     <div className="admin_main_container">
-      <nav className="navbar">
-        <header className="user">
-          <div className="image">
-            <img src={adminUserImage} alt="image" />
-          </div>
-
-          <div className="user_info">
-            <h4>{adminUserEmail}Admin001@gmail.com</h4>
-            <p>{adminUserName}Admin01</p>
-          </div>
-        </header>
-        <menu className="menu">
-          <div className="list">
-            <h4>
-              <i className="fa-solid fa-book-atlas"></i> 書籍管理
-            </h4>
-            <ul>
-              <li>
-                <i className="fa-solid fa-book"></i>Book Management
-              </li>
-              <li>
-                <i className="fa-regular fa-money-bill-1"></i>Borrow Records
-                Management
-              </li>
-            </ul>
-          </div>
-          <div className="list">
-            <h4>使用者管理</h4>
-            <ul>
-              <li>
-                <i className="fa-solid fa-hammer"></i>AdminUser Management
-              </li>
-              <li>
-                <i className="fa-solid fa-user"></i>User Management
-              </li>
-            </ul>
-          </div>
-          <div className="list">
-            <h4>
-              <i className="fa-solid fa-file"></i> 報表管理
-            </h4>
-            <ul>
-              <li>
-                <i className="fa-solid fa-file"></i>Book Report
-              </li>
-              <li>
-                <i className="fa-solid fa-file"></i>Borrow Records Report
-              </li>
-            </ul>
-          </div>
-
-          <div className="list">
-            <h4>
-              <i className="fa-solid fa-file"></i> 登出
-            </h4>
-            <ul>
-              <li onClick={() => navigate("/")}>
-                <i className="fa-solid fa-arrow-right-from-bracket"></i>Logout
-              </li>
-            </ul>
-          </div>
-        </menu>
-      </nav>
+      <Navbar email={user.email} username={user.username} image={adminUserImage} />
       <section className="main_content">
-        <div className="page_title">
-          <h3>Book Managenment</h3>
-        </div>
-        <div className="filter">
-          <div className="search_section">
-            <p>Your data</p>
-            <button className="search_btn">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <input
-              type="text"
-              className="search"
-              placeholder="enter your data"
-            ></input>
-          </div>
-
-          <div className="column">
-            <p>column</p>
-            <select name="book_column" id="book_column">
-              <option value="" disabled defaultChecked>
-                --請選擇以下欄位--
-              </option>
-              <option value="bookname">Book Name</option>
-              <option value="bookauthor">bookauthor</option>
-              <option value="bookstatus">bookstatus</option>
-              <option value="borrowcount">borrowcount</option>
-              <option value="bookcategory">bookcategory</option>
-            </select>
-          </div>
-        </div>
-
+        <AdminTitle title={"Book Managenment"}/>
+        <Filter getSingleBookFunc={getSingleBook} selectFunc={selectFunc} editChangeListener={addEditChangeListener} column={column} info={input} />
         <table className="data">
           <thead className="table_head">
             <tr className="column">
-              <ColumnTitle data={Object.keys(response[0]).filter((item)=>item !== '__typename')} />
+              <ColumnTitle
+                data={response}
+              />
             </tr>
           </thead>
           <tbody className="table_body">
-              <BookList data={response} page={pageNumber} />
+            <BookList data={books} page={pageNumber} />
           </tbody>
         </table>
-
-        <div className="buttons">
-          <button onClick={reducePageNumber} className="previous"><i className="fa-solid fa-circle-chevron-left"></i>上一頁</button>
-          <button onClick={addPageNumber} className="next"><i className="fa-solid fa-circle-chevron-right"></i>下一頁</button>
-        </div>
+        <ControlPageBtn reduce={reducePageNumber} add={addPageNumber}/>
       </section>
     </div>
   );
 }
-
 export default AdminMainPage;

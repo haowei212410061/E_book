@@ -86,6 +86,25 @@ export const DELETE_ADMIN_USER = gql`
   }
 `;
 
+export const GET_SINGLE_BOOK_WITH_ADMIN = gql`
+  mutation getSingleBookWithAdmin($column: String!, $info: String!) {
+    SingleBook(column: $column, info: $info) {
+      status
+      message
+      data {
+        bookid
+        bookname
+        bookauthor
+        productiondate
+        bookstatus
+        borrowcount
+        bookcategory
+        bookimage
+      }
+    }
+  }
+`;
+
 export const CREATE_BOOK = gql`
   mutation createBook(
     $bookid: String!

@@ -190,7 +190,7 @@ body {
 }
 .admin_main_container .main_content .data .table_head {
   width: 95%;
-  height: 40px;
+  height: 30px;
   background-color: rgb(197, 197, 206);
 }
 .admin_main_container .main_content .data .table_head .column {
@@ -273,6 +273,7 @@ body {
   width: 1200px;
   height: 35px;
   gap: 10px;
+  align-items: center;
   border-left: 1px solid rgba(236, 236, 236, 0.474);
   border-right: 1px solid rgba(236, 236, 236, 0.489);
   border-bottom: 2px solid rgba(236, 236, 236, 0.933);
@@ -282,11 +283,11 @@ body {
   text-align: center;
   width: 100px;
   height: 30px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .admin_main_container .main_content .data .table_body .info .bookName {
   text-align: left;
-  font-size: 14px;
+  font-size: 12px;
   width: 200px;
   height: 30px;
 }
@@ -295,40 +296,53 @@ body {
   padding-right: 40px;
   width: 100px;
   height: 30px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .admin_main_container .main_content .data .table_body .info .productionDate {
   width: 155px;
   height: 30px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .admin_main_container .main_content .data .table_body .info .bookStatus {
   text-align: center;
   width: 100px;
   height: 30px;
-  font-size: 14px;
+  font-size: 12px;
   padding-right: 50px;
 }
 .admin_main_container .main_content .data .table_body .info .borrowCount {
   text-align: center;
   width: 60px;
   height: 30px;
-  font-size: 14px;
+  font-size: 12px;
   padding-right: 50px;
 }
 .admin_main_container .main_content .data .table_body .info .bookCategory {
   text-align: center;
   width: 100px;
   height: 30px;
-  font-size: 14px;
+  font-size: 12px;
   padding-right: 65px;
 }
 .admin_main_container .main_content .data .table_body .info .Image {
   text-align: center;
-  width: 100px;
+  width: 40px;
   height: 30px;
-  font-size: 14px;
+  font-size: 12px;
   padding-right: 50px;
+}
+.admin_main_container .main_content .data .table_body .info .deleteBtn {
+  width: 50px;
+  height: 30px;
+  margin-right: 3px;
+  background-color: rgb(230, 230, 230);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .data .table_body .info .deleteBtn:hover {
+  color: white;
+  cursor: pointer;
+  background-color: rgb(68, 68, 68);
 }
 .admin_main_container .main_content .buttons {
   margin-left: 550px;
@@ -345,6 +359,7 @@ body {
 }
 .admin_main_container .main_content .buttons button:hover {
   cursor: pointer;
+  color: white;
   background-color: rgb(68, 68, 68);
 }
 

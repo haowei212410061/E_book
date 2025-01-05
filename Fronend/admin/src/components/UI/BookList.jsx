@@ -1,5 +1,5 @@
 import React from "react";
-
+import { button } from "../../styles/components/AskUserStyle";
 function BookList({data,page}) {
   return (
     <>
@@ -26,7 +26,11 @@ function BookList({data,page}) {
                 alt="img"
               />
             </td>
+            <td >
+            <button className="deleteBtn">刪除</button>
+              </td>
           </tr>
+          
         );
       })}
     </>

@@ -13,14 +13,7 @@ function Login() {
   const NavigateToMainWeb = useNavigate();
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
-  
-  useEffect(() => {
-    console.log({
-      account: account,
-      password: password,
-    });
-  }, [account, password]);
-  
+
   function OnAccountChangeListener(event) {
     setAccount(event.target.value);
   }
@@ -40,8 +33,8 @@ function Login() {
           password: password,
         },
       });
-      token = data.AdminUserLogin.jwt;
       console.log(data,token)
+      localStorage.setItem('UserLogin',JSON.stringify(data.AdminUserLogin))
       NavigateToMainWeb('/main')
     }catch(error){
       console.log(error)
