@@ -200,7 +200,7 @@ body {
   margin-left: 10px;
   justify-content: space-between;
 }
-.admin_main_container .main_content .data .table_head .column .bookid {
+.admin_main_container .main_content .data .table_head .column .column0 {
   text-align: center;
   padding-right: 40px;
   width: 70px;
@@ -208,14 +208,14 @@ body {
   margin-top: 10px;
   color: white;
 }
-.admin_main_container .main_content .data .table_head .column .bookname {
+.admin_main_container .main_content .data .table_head .column .column1 {
   width: 100px;
   height: 40px;
   padding-right: 80px;
   margin-top: 10px;
   color: white;
 }
-.admin_main_container .main_content .data .table_head .column .bookauthor {
+.admin_main_container .main_content .data .table_head .column .column2 {
   text-align: center;
   width: 100px;
   height: 40px;
@@ -223,7 +223,7 @@ body {
   color: white;
   padding-right: 50px;
 }
-.admin_main_container .main_content .data .table_head .column .productiondate {
+.admin_main_container .main_content .data .table_head .column .column3 {
   text-align: center;
   width: 155px;
   height: 40px;
@@ -231,21 +231,21 @@ body {
   color: white;
   padding-right: 40px;
 }
-.admin_main_container .main_content .data .table_head .column .bookstatus {
+.admin_main_container .main_content .data .table_head .column .column4 {
   width: 100px;
   height: 40px;
   padding-right: 30px;
   margin-top: 10px;
   color: white;
 }
-.admin_main_container .main_content .data .table_head .column .borrowcount {
+.admin_main_container .main_content .data .table_head .column .column5 {
   width: 60px;
   height: 40px;
   padding-right: 55px;
   margin-top: 10px;
   color: white;
 }
-.admin_main_container .main_content .data .table_head .column .bookcategory {
+.admin_main_container .main_content .data .table_head .column .column6 {
   margin-top: 10px;
   color: white;
   text-align: center;
@@ -253,7 +253,7 @@ body {
   height: 40px;
   padding-right: 40px;
 }
-.admin_main_container .main_content .data .table_head .column .bookimage {
+.admin_main_container .main_content .data .table_head .column .column7 {
   margin-top: 10px;
   color: white;
   text-align: center;

@@ -237,13 +237,15 @@ body {
                 width: 95%;
                 height: 30px;
                 background-color: rgb(197, 197, 206);
+
                 .column {
                     width: 90%;
                     display: flex;
                     gap: 15px;
                     margin-left: 10px;
                     justify-content: space-between;
-                    .bookid {
+
+                    .column0 {
                         text-align: center;
                         padding-right: 40px;
                         width: 70px;
@@ -252,7 +254,7 @@ body {
                         color: white;
                     }
 
-                    .bookname {
+                    .column1 {
                         width: 100px;
                         height: 40px;
                         padding-right: 80px;
@@ -261,7 +263,7 @@ body {
                         color: white;
                     }
 
-                    .bookauthor {
+                    .column2 {
                         text-align: center;
                         width: 100px;
                         height: 40px;
@@ -270,7 +272,7 @@ body {
                         padding-right: 50px;
                     }
 
-                    .productiondate {
+                    .column3 {
                         text-align: center;
                         width: 155px;
                         height: 40px;
@@ -279,7 +281,7 @@ body {
                         padding-right: 40px;
                     }
 
-                    .bookstatus {
+                    .column4 {
                         width: 100px;
                         height: 40px;
                         padding-right: 30px;
@@ -287,7 +289,7 @@ body {
                         color: white;
                     }
 
-                    .borrowcount {
+                    .column5 {
                         width: 60px;
                         height: 40px;
                         padding-right: 55px;
@@ -295,7 +297,7 @@ body {
                         color: white;
                     }
 
-                    .bookcategory {
+                    .column6 {
                         margin-top: 10px;
                         color: white;
                         text-align: center;
@@ -304,7 +306,7 @@ body {
                         padding-right: 40px;
                     }
 
-                    .bookimage {
+                    .column7 {
                         margin-top: 10px;
                         color: white;
                         text-align: center;
@@ -404,6 +406,7 @@ body {
                         border-radius: 7px 7px 7px 7px;
                         border: none;
                     }
+
                     .deleteBtn:hover {
                         color: white;
                         cursor: pointer;
