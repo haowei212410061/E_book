@@ -24,7 +24,7 @@ function Navbar({ email, username, image }) {
             <i className="fa-solid fa-book-atlas"></i> 書籍管理
           </h4>
           <ul>
-            <li onClick={()=>{navigate('/main')}}>
+            <li onClick={() => navigate("/main")}>
               <i className="fa-solid fa-book"></i>Book Management
             </li>
             <li>

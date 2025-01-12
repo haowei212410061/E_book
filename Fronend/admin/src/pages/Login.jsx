@@ -3,28 +3,38 @@ import { toast } from "react-toastify";
 import "../styles/pages/Login.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from "react-router-dom";
-import {useMutation} from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { ADMIN_USER_LOGIN } from "../Graphql api/mutation";
 import { client } from "../main";
 import { GET_ALL_BOOK_WITH_ADMIN } from "../Graphql api/query";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllBook, setBook } from "../state/bookdetail/booksSlice";
+import { useToast } from "../hooks/useToast";
 //useMutation = 需要手動觸發 例如按鈕點擊觸法
 //useQuery = 在組件渲染時會自動觸發。通常，當元件首次載入或任何其依賴項（例如，輸入變數）發生變更時，您可以使用它來取得資料
 let token;
 function Login() {
   const [adminUserLogin] = useMutation(ADMIN_USER_LOGIN);
+  const dispatch = useDispatch();
+  const books = useSelector((state) => state.books.books);
   const NavigateToMainWeb = useNavigate();
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
-  
-  async function fetchBooks(){
+  const { warning } = useToast();
+
+  async function fetchBooks() {
     try {
       const res = await client.query({
         query: GET_ALL_BOOK_WITH_ADMIN,
       });
-      localStorage.setItem('Allbooks', JSON.stringify(res.data.AdminBooks.data));
+      localStorage.setItem(
+        "Allbooks",
+        JSON.stringify(res.data.AdminBooks.data)
+      );
+      return res.data.AdminBooks.data;
     } catch (error) {
       console.error("Error fetching books:", error);
-      toast.error("Failed to load books.");
+      error("Failed to load books.");
     }
   }
 
@@ -37,9 +47,9 @@ function Login() {
   }
 
   async function Userlogin() {
-    try{
-      if(account.length === 0 || password.length === 0){
-        return toast.warning("帳號密碼不可為空")
+    try {
+      if (account.length === 0 || password.length === 0) {
+        return warning("帳號密碼不可為空");
       }
       const { data } = await adminUserLogin({
         variables: {
@@ -47,13 +57,17 @@ function Login() {
           password: password,
         },
       });
-      console.log(data,token)
-      localStorage.setItem('UserLogin',JSON.stringify(data.AdminUserLogin))
-      await fetchBooks();  
-      NavigateToMainWeb('/main')
-    }catch(error){
-      console.log(error)
-      toast.warning("帳號密碼錯誤")
+      console.log(data, token);
+      localStorage.setItem(
+        "UserLogin",
+        JSON.stringify(data.AdminUserLogin.data)
+      );
+      const res = await fetchBooks();
+      dispatch(setBook(res));
+      NavigateToMainWeb("/main",{state:{books:res}});
+    } catch (error) {
+      console.log(error);
+      warning("帳號密碼錯誤");
     }
   }
   return (

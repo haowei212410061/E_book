@@ -1,13 +1,22 @@
 import React from "react";
 import { useState } from "react";
 
-function Filter({getSingleBookFunc,editChangeListener,selectFunc,column,info}) {
-
+function Filter({
+  getSingleBookFunc,
+  editChangeListener,
+  selectFunc,
+  column,
+  info,
+  OpenCreateWindow
+}) {
   return (
     <div className="filter">
       <div className="search_section">
         <p>Your data</p>
-        <button className="search_btn" onClick={() => getSingleBookFunc(column,info)}>
+        <button
+          className="search_btn"
+          onClick={() => getSingleBookFunc(column, info)}
+        >
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
         <input
@@ -35,6 +44,8 @@ function Filter({getSingleBookFunc,editChangeListener,selectFunc,column,info}) {
           <option value="bookcategory">bookCategory</option>
         </select>
       </div>
+
+      <button className="createBtn" onClick={(event)=>OpenCreateWindow("grid",event)}>創建</button>
     </div>
   );
 }

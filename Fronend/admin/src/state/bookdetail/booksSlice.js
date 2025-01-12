@@ -13,8 +13,14 @@ const booksSlice = createSlice({
     reducers:{
         fetchAllBook(state,action){
             state.books = action.payload
+        },
+        deleteBook(state,action){
+            state.books = action.payload
+        },
+        setBook(state,action){
+            state.books = action.payload;
         }
     },
 })
-export const {fetchAllBook} = booksSlice.actions
+export const {fetchAllBook,deleteBook,setBook} = booksSlice.actions
 export default booksSlice.reducer

@@ -1,6 +1,6 @@
 import React from "react";
 import { button } from "../../styles/components/AskUserStyle";
-function BookList({data,page}) {
+function BookList({data,page,deleteFunc,openEditWindow}) {
   return (
     <>
       {data.slice(page, page + 10).map((item, index) => {
@@ -26,8 +26,9 @@ function BookList({data,page}) {
                 alt="img"
               />
             </td>
-            <td >
-            <button className="deleteBtn">刪除</button>
+            <td className="listbuttons">
+            <button onClick={()=>deleteFunc(item.bookid)} className="deleteBtn">刪除</button>
+            <button onClick={(event)=>openEditWindow("grid",event)} className="editBtn">編輯</button>
               </td>
           </tr>
           
