@@ -1,59 +1,145 @@
 import React from "react";
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { useState,useRef } from "react";
 import { useBookAPI } from "../../hooks/useBookAPI";
 import { useToast } from "../../hooks/useToast";
 import { useDispatch, useSelector } from "react-redux";
 import { setBook } from "../../state/bookdetail/booksSlice";
-import { button } from "../../styles/components/AskUserStyle";
-function Sheet({ buttonname, closeWindowFn, windowStyle, color }) {
+import { nanoid } from "nanoid";
+import { client } from "../../main";
+import { GET_SINGLE_BOOK_WITH_ADMIN } from "../../Graphql api/mutation";
+
+function Sheet({ buttonname, closeWindowFn, windowStyle, color, bookid }) {
   const books = useSelector((state) => state.books.books);
+  const { success } = useToast();
   const dispatch = useDispatch();
-  const { createBookWithAdmin, getAllBookWithAdmin } = useBookAPI();
+  const formRef = useRef();
+  const {
+    createBookWithAdmin,
+    getAllBookWithAdmin,
+    publicImageUrl,
+    getSingleBook,
+    updateBook,
+  } = useBookAPI();
   const { error } = useToast();
   const [bookInfo, setBookInfo] = useState({
-    bookid: "",
+    bookid: "B" + nanoid().slice(0, 9),
     bookname: "",
     bookauthor: "",
     productiondate: "",
-    bookstatus: "",
+    bookstatus: "Borrowed",
     borrowcount: 0,
     bookcategory: "",
     bookimage: "",
   });
 
-  function addChangeListener(event) {
+  
+
+  async function addChangeListener(event) {
     const { name, value } = event.target;
     if (name === "borrowcount") {
-      console.log(name);
       setBookInfo((prevData) => ({
         ...prevData,
         [name]: Number(value),
       }));
+    } else if (name === "bookimage") {
+      const file = event.target.files[0];
+      const url = await publicImageUrl(file);
+      setBookInfo((prevData) => ({
+        ...prevData,
+        ["bookimage"]: url,
+      }));
+    } else if (name === "bookstatus") {
+      if (value.length === 0) {
+        setBookInfo((prevData) => ({
+          ...prevData,
+          ["bookstatus"]: "Borrowed",
+        }));
+      } else {
+        setBookInfo((prevData) => ({
+          ...prevData,
+          ["bookstatus"]: value,
+        }));
+      }
     } else {
       setBookInfo((prevData) => ({
         ...prevData,
         [name]: value,
       }));
+      console.log(value);
     }
   }
+  const handleOpenCreateWindow = () => {
+    formRef.current.reset(); 
+  };
 
-  async function createBook() {
-    if (buttonname === "create") {
-      for (let item in bookInfo) {
-        if (bookInfo[item].length === 0) {
-          return error("有必要欄位未輸入");
+  async function createBook(event) {
+    try {
+      if (buttonname === "create") {
+        for (let field in bookInfo) {
+          if (field === "borrowcount") {
+            continue;
+          } else {
+            if (bookInfo[field].length === 0) {
+              return error("有必要欄位未輸入");
+            }
+          }
+        }
+        console.log(bookInfo);
+        const oldData = await getAllBookWithAdmin();
+        const newBook = await createBookWithAdmin(bookInfo);
+        dispatch(setBook([...newBook, ...oldData]));
+        closeWindowFn("none", event);
+        handleOpenCreateWindow();
+      }
+      if (buttonname === "edit") {
+        try {
+          const { data } = await client.mutate({
+            mutation: GET_SINGLE_BOOK_WITH_ADMIN,
+            variables: {
+              column: "bookid",
+              info: bookid,
+            },
+          });
+          const res = data.SingleBook.data;
+          for (let field in bookInfo) {
+            if (field === "borrowcount" && bookInfo["borrowcount"] !== 0) {
+              res[0]["borrowcount"] = bookInfo["borrowcount"];
+            } else if (bookInfo[field].length !== 0) {
+              res[0][field] = bookInfo[field];
+            }
+          }
+          const updateRes = await updateBook(res[0], bookid);
+          const old = await getAllBookWithAdmin();
+          const oldRes = old.filter(
+            (item) => item.bookid !== updateRes[0].bookid
+          );
+          success("已更新一筆資料");
+          dispatch(setBook([...updateRes, ...oldRes]));
+          setBookInfo({
+            bookid: "B" + nanoid().slice(0, 9),
+            bookname: "",
+            bookauthor: "",
+            productiondate: "",
+            bookstatus: "Borrowed",
+            borrowcount: 0,
+            bookcategory: "",
+            bookimage: "",
+          });
+          closeWindowFn("none", event);
+          handleOpenCreateWindow();
+        } catch (error) {
+          console.log(error);
         }
       }
-      const oldData = await getAllBookWithAdmin();
-      const newBook = await createBookWithAdmin(bookInfo);
-      dispatch(setBook([...newBook, ...oldData]));
-    } else {
+    } catch (error) {
+      console.log(error);
     }
   }
 
+  
+
   return (
-    <div className="Sheet" style={{ display: windowStyle }}>
+    <form ref={formRef} className="Sheet" style={{ display: windowStyle }}>
       <div className="close" style={{ backgroundColor: color }}>
         <button
           className="closeBtn"
@@ -63,14 +149,6 @@ function Sheet({ buttonname, closeWindowFn, windowStyle, color }) {
         </button>
       </div>
       <div className="content">
-        <label htmlFor="bookid">Bookid:</label>
-        <input
-          type="text"
-          className="bookid"
-          name="bookid"
-          id="bookid"
-          onChange={(event) => addChangeListener(event)}
-        />
         <label htmlFor="bookname">BookName:</label>
         <input
           type="text"
@@ -93,6 +171,7 @@ function Sheet({ buttonname, closeWindowFn, windowStyle, color }) {
           className="productiondate"
           id="productiondate"
           name="productiondate"
+          style={{ position: "relative", zIndex: "20" }}
           onChange={(event) => addChangeListener(event)}
         />
         <div className="bookstatus">
@@ -101,21 +180,31 @@ function Sheet({ buttonname, closeWindowFn, windowStyle, color }) {
             <input
               type="radio"
               className="borrowed"
-              name="borrowstatus"
+              name="bookstatus"
               id="borrowed"
-              value="borrowed"
+              value="Borrowed"
               onChange={(event) => addChangeListener(event)}
             />
-            <label htmlFor="borrowstatus">Borrowed</label>
+            <label htmlFor="bookstatus">Borrowed</label>
             <input
               type="radio"
               className="availabled"
-              name="borrowstatus"
+              name="bookstatus"
               id="availabled"
-              value="available"
+              value="Available"
               onChange={(event) => addChangeListener(event)}
             />
-            <label htmlFor="borrowstatus">Available</label>
+            <label htmlFor="bookstatus">Available</label>
+
+            <input
+              type="radio"
+              className="Reserved"
+              name="bookstatus"
+              id="Reserved"
+              value="Reserved"
+              onChange={(event) => addChangeListener(event)}
+            />
+            <label htmlFor="bookstatus">Reserved</label>
           </div>
         </div>
         <label htmlFor="borrowcount">BorrowCount:</label>
@@ -150,13 +239,13 @@ function Sheet({ buttonname, closeWindowFn, windowStyle, color }) {
         />
       </div>
       <button
-        className="createBtn"
+        className="createSheetBtn"
         style={{ backgroundColor: color }}
-        onClick={() => createBook()}
+        onClick={(event) => createBook(event)}
       >
         {buttonname}
       </button>
-    </div>
+    </form>
   );
 }
 

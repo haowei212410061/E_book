@@ -1,21 +1,28 @@
 import React from "react";
 import { useState } from "react";
-
+import { useCommand } from "../hooks/useCommand";
+import { useBookAPI } from "../hooks/useBookAPI";
 function Filter({
-  getSingleBookFunc,
-  editChangeListener,
-  selectFunc,
-  column,
-  info,
-  OpenCreateWindow
+  getSingleData,
+  OpenCreateWindow,
+  ShouldDisplay,
+  options,
+  defaultValue
 }) {
+  const [input, setInput] = useState("");
+  const [column,setColumn] = useState(defaultValue)
+  const {addEditChangeListener} = useCommand();
+  
   return (
     <div className="filter">
       <div className="search_section">
         <p>Your data</p>
         <button
           className="search_btn"
-          onClick={() => getSingleBookFunc(column, info)}
+          onClick={() =>{
+            console.log(column,input)
+            getSingleData(column, input)
+          } }
         >
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -23,7 +30,7 @@ function Filter({
           type="text"
           className="search"
           placeholder="enter your data"
-          onChange={(event) => editChangeListener(event)}
+          onChange={(event) => addEditChangeListener(event,setInput)}
         ></input>
       </div>
 
@@ -32,20 +39,19 @@ function Filter({
         <select
           name="book_column"
           id="book_column"
-          onChange={(event) => selectFunc(event)}
+          onChange={(event) => addEditChangeListener(event,setColumn)}
         >
-          <option value="" disabled defaultChecked>
+          <option value="" disabled >
             --請選擇以下欄位--
           </option>
-          <option value="bookname">BookName</option>
-          <option value="bookauthor">bookAuthor</option>
-          <option value="bookstatus">bookStatus</option>
-          <option value="borrowcount">borrowCount</option>
-          <option value="bookcategory">bookCategory</option>
+          {
+            options.map((item,index,arr)=>{
+              return <option key={index} value={item}>{item.toUpperCase()}</option>
+            })
+          }
         </select>
       </div>
-
-      <button className="createBtn" onClick={(event)=>OpenCreateWindow("grid",event)}>創建</button>
+      <button style={{display:ShouldDisplay}} className="createBtn" onClick={(event)=>OpenCreateWindow("grid",event)}>創建</button>
     </div>
   );
 }

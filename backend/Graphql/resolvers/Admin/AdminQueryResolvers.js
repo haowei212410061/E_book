@@ -68,9 +68,9 @@ const AdminQueryResolvers = {
                 throw new ApolloError('fail to query books')
             }
         },
-        SingleBorrowRecord: async (parent, { userid, bookid }, { db }) => {
+        SingleBorrowRecord: async (parent, { column, info }, { db }) => {
             try {
-                const res = await db.query('SELECT * FROM "BorrowRecord" WHERE userid = $1 OR bookid = $2', [userid, bookid]);
+                const res = await db.query(`SELECT * FROM "BorrowRecord" WHERE ${column} = $1`, [info]);
                 return {
                     status:200,
                     message:"query single borrow records successfully",

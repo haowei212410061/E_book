@@ -243,11 +243,6 @@ body {
         }
 
         .data {
-            width: 1200px;
-            height: 400px;
-            margin-left: 20px;
-            border-collapse: collapse;
-            table-layout: fixed;
 
             .table_head {
                 width: 95%;
@@ -261,7 +256,7 @@ body {
                     margin-left: 10px;
                     justify-content: space-between;
 
-                    .column0 {
+                    .book0 {
                         text-align: center;
                         padding-right: 40px;
                         width: 70px;
@@ -270,7 +265,7 @@ body {
                         color: white;
                     }
 
-                    .column1 {
+                    .book1 {
                         width: 100px;
                         height: 40px;
                         padding-right: 88px;
@@ -279,7 +274,7 @@ body {
                         color: white;
                     }
 
-                    .column2 {
+                    .book2 {
                         text-align: center;
                         width: 100px;
                         height: 40px;
@@ -288,7 +283,7 @@ body {
                         padding-right: 30px;
                     }
 
-                    .column3 {
+                    .book3 {
                         text-align: center;
                         width: 155px;
                         height: 40px;
@@ -297,7 +292,7 @@ body {
                         padding-right: 30px;
                     }
 
-                    .column4 {
+                    .book4 {
                         width: 100px;
                         height: 40px;
                         padding-right: 30px;
@@ -305,7 +300,7 @@ body {
                         color: white;
                     }
 
-                    .column5 {
+                    .book5 {
                         width: 60px;
                         height: 40px;
                         padding-right: 55px;
@@ -313,7 +308,7 @@ body {
                         color: white;
                     }
 
-                    .column6 {
+                    .book6 {
                         margin-top: 10px;
                         color: white;
                         text-align: center;
@@ -322,7 +317,7 @@ body {
                         padding-right: 20px;
                     }
 
-                    .column7 {
+                    .book7 {
                         margin-top: 10px;
                         color: white;
                         text-align: center;
@@ -332,7 +327,65 @@ body {
                     }
                 }
 
+
+
             }
+
+            .table_head_borrow {
+                width: 600px;
+                height: 30px;
+                background-color: rgb(197, 197, 206);
+
+                .column_borrow {
+                    width: 50%;
+                    display: flex;
+                    margin-left: 10px;
+                    justify-content: space-between;
+
+                    .borrow0 {
+                        text-align: center;
+                        padding-right: 80px;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        margin-left: 5px;
+                        color: white;
+                    }
+
+                    .borrow1 {
+                        text-align: center;
+                        padding-right: 90px;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        margin-left: 5px;
+                        color: white;
+                    }
+
+                    .borrow2 {
+                        text-align: center;
+                        padding-right: 80px;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        margin-left: 5px;
+                        color: white;
+                    }
+
+                    .borrow3 {
+                        text-align: center;
+                        padding-right: 40px;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        margin-left: 5px;
+                        color: white;
+                    }
+
+                }
+            }
+
+
 
             .table_body {
                 width: 1200px;
@@ -342,7 +395,7 @@ body {
                 gap: 10px;
 
 
-                .info {
+                .bookinfo {
                     display: flex;
                     width: 1200px;
                     height: 35px;
@@ -353,14 +406,14 @@ body {
                     border-bottom: 2px solid rgba(236, 236, 236, 0.933);
                     border-radius: 0px 0px 5px 5px;
 
-                    .bookId {
+                    .book0 {
                         text-align: center;
                         width: 100px;
                         height: 30px;
                         font-size: 12px;
                     }
 
-                    .bookName {
+                    .book1 {
                         text-align: left;
                         font-size: 12px;
                         width: 200px;
@@ -368,7 +421,7 @@ body {
                     }
 
 
-                    .bookAuthor {
+                    .book2 {
                         text-align: left;
                         padding-right: 30px;
                         width: 100px;
@@ -376,13 +429,13 @@ body {
                         font-size: 12px;
                     }
 
-                    .productionDate {
+                    .book3 {
                         width: 120px;
                         height: 30px;
                         font-size: 12px;
                     }
 
-                    .bookStatus {
+                    .book4 {
                         text-align: center;
                         width: 110px;
                         height: 30px;
@@ -390,7 +443,7 @@ body {
                         padding-right: 40px;
                     }
 
-                    .borrowCount {
+                    .book5 {
                         text-align: center;
                         width: 60px;
                         height: 30px;
@@ -398,7 +451,7 @@ body {
                         padding-right: 50px;
                     }
 
-                    .bookCategory {
+                    .book6 {
                         text-align: center;
                         width: 100px;
                         height: 30px;
@@ -406,11 +459,19 @@ body {
                         padding-right: 65px;
                     }
 
-                    .Image {
+                    .book7 {
                         text-align: center;
                         width: 40px;
                         height: 30px;
                         font-size: 12px;
+
+                        img {
+                            display: "grid";
+                            width: "30px";
+                            height: "30px";
+                            justify-content: "center";
+                            align-items: center;
+                        }
                     }
 
                     .listbuttons {
@@ -453,32 +514,105 @@ body {
 
 
                 }
+
+                .buttons {
+
+                    button {
+                        width: 100px;
+                        height: 30px;
+                        background-color: rgb(230, 230, 230);
+                        border-radius: 7px 7px 7px 7px;
+                        border: none;
+                    }
+
+                    button:hover {
+                        cursor: pointer;
+                        color: white;
+                        background-color: rgb(68, 68, 68);
+                    }
+                }
             }
+
+
+            .table_body_borrow {
+                width: 600px;
+                height: 100%;
+                margin-top: 20px;
+                vertical-align: auto;
+                gap: 10px;
+
+
+                .borrowinfo {
+                    display: flex;
+                    width: 600px;
+                    height: 35px;
+                    gap: 5px;
+                    align-items: center;
+                    border-left: 1px solid rgba(236, 236, 236, 0.474);
+                    border-right: 1px solid rgba(236, 236, 236, 0.489);
+                    border-bottom: 2px solid rgba(236, 236, 236, 0.933);
+                    border-radius: 0px 0px 5px 5px;
+
+                    .borrow0 {
+                        text-align: center;
+                        padding-right: 55px;
+                        width: 100px;
+                        height: 30px;
+                        font-size: 12px;
+                    }
+
+                    .borrow1 {
+                        text-align: left;
+                        font-size: 12px;
+                        width: 120px;
+                        height: 30px;
+                        padding-right: 20px;
+                    }
+
+
+                    .borrow2 {
+                        text-align: left;
+                        padding-right: 50px;
+                        width: 100px;
+                        height: 30px;
+                        font-size: 12px;
+                    }
+
+                    .borrow3 {
+                        width: 120px;
+                        height: 30px;
+                        font-size: 12px;
+                    }
+
+
+                }
+
+                .buttons {
+
+                    button {
+                        width: 100px;
+                        height: 30px;
+                        background-color: rgb(230, 230, 230);
+                        border-radius: 7px 7px 7px 7px;
+                        border: none;
+                    }
+
+                    button:hover {
+                        cursor: pointer;
+                        color: white;
+                        background-color: rgb(68, 68, 68);
+                    }
+                }
+            }
+
+
+
+
         }
 
 
 
-        .buttons {
-            margin-left: 550px;
-            margin-top: 20px;
-            display: flex;
-            gap: 15px;
 
-
-            button {
-                width: 100px;
-                height: 30px;
-                background-color: rgb(230, 230, 230);
-                border-radius: 7px 7px 7px 7px;
-                border: none;
-            }
-
-            button:hover {
-                cursor: pointer;
-                color: white;
-                background-color: rgb(68, 68, 68);
-            }
-        }
 
 
     }
@@ -553,7 +687,8 @@ body {
                     width: 15px;
                     height: 15px;
                 }
-                label{
+
+                label {
                     position: relative;
                     top: 3px;
                     padding-right: 10px;
@@ -561,7 +696,7 @@ body {
 
             }
 
-        
+
         }
 
         input {
@@ -570,17 +705,18 @@ body {
             border: none;
             background-color: rgba(231, 231, 231, 0.455);
         }
-    
+
         label {
             width: 50px;
             font-size: 14px;
         }
 
-        
 
 
-    } 
-    .createBtn {
+
+    }
+
+    .createSheetBtn {
         position: relative;
         left: 50px;
         bottom: 40px;
@@ -594,7 +730,7 @@ body {
     }
 }
 
-.backgroundStyle{
+.backgroundStyle {
     position: absolute;
     z-index: 50;
     display: none;

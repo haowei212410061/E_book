@@ -22,7 +22,7 @@ const UserQueryDefs = gql`
     AdminBooks: AdminBookDetailResponse
   
     BorrowRecords:AdminBorrowRecordsResponse
-    SingleBorrowRecord(userid: String, bookid: String): AdminBorrowRecordsResponse
+    SingleBorrowRecord(column: String, info: String): AdminBorrowRecordsResponse
   }
 `;
 

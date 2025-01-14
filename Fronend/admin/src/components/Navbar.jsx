@@ -27,7 +27,7 @@ function Navbar({ email, username, image }) {
             <li onClick={() => navigate("/main")}>
               <i className="fa-solid fa-book"></i>Book Management
             </li>
-            <li>
+            <li onClick={()=> navigate("/borrow")}>
               <i className="fa-regular fa-money-bill-1"></i>Borrow Records
               Management
             </li>

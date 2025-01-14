@@ -92,8 +92,8 @@ export const GET_ALL_BORROW_RECORD_WITH_ADMIN = gql`
 `;
 
 export const GET_SINGLE_BORROW_RECORDS_WITH_ADMIN = gql`
-  query getSingleBorrowRecordsWithAdmin($userid: String!, $bookid: String!) {
-    SingleBorrowRecord(userid: $userid, bookid: $bookid) {
+  query getSingleBorrowRecordsWithAdmin($column: String!, $info: String!) {
+    SingleBorrowRecord(column: $column, info: $info) {
       status
       message
       data {

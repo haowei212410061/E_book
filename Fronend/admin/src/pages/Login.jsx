@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import React, {useState } from "react";
 import "../styles/pages/Login.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,7 @@ import { ADMIN_USER_LOGIN } from "../Graphql api/mutation";
 import { client } from "../main";
 import { GET_ALL_BOOK_WITH_ADMIN } from "../Graphql api/query";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllBook, setBook } from "../state/bookdetail/booksSlice";
+import { setBook } from "../state/bookdetail/booksSlice";
 import { useToast } from "../hooks/useToast";
 //useMutation = 需要手動觸發 例如按鈕點擊觸法
 //useQuery = 在組件渲染時會自動觸發。通常，當元件首次載入或任何其依賴項（例如，輸入變數）發生變更時，您可以使用它來取得資料

@@ -1,8 +1,9 @@
 import React from "react";
+import { button } from "../../styles/components/AskUserStyle";
 
-function ControlPageBtn({reduce,add}) {
+function ControlPageBtn({reduce,add,buttonStyle}) {
   return (
-    <div className="buttons">
+    <div style={buttonStyle} className="buttons">
       <button onClick={reduce} className="previous">
         <i className="fa-solid fa-circle-chevron-left"></i>上一頁
       </button>

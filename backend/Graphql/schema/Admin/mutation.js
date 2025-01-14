@@ -35,6 +35,17 @@ const MutationTypeDefs = gql`
       bookstatus:String!
     ): AdminBookDetailResponse
 
+    updateBook(
+      bookid: String!
+      bookname: String!
+      bookauthor: String!
+      productiondate: String!
+      bookstatus: String!
+      borrowcount: Int!
+      bookcategory: String!
+      bookimage: String!
+    ): AdminBookDetailResponse
+
     updateBookBorrowCount(
       bookid:String!
       borrowcount:Int!

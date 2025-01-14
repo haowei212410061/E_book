@@ -197,13 +197,6 @@ body {
   cursor: pointer;
   background-color: rgb(39, 121, 235);
 }
-.admin_main_container .main_content .data {
-  width: 1200px;
-  height: 400px;
-  margin-left: 20px;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
 .admin_main_container .main_content .data .table_head {
   width: 95%;
   height: 30px;
@@ -216,7 +209,7 @@ body {
   margin-left: 10px;
   justify-content: space-between;
 }
-.admin_main_container .main_content .data .table_head .column .column0 {
+.admin_main_container .main_content .data .table_head .column .book0 {
   text-align: center;
   padding-right: 40px;
   width: 70px;
@@ -224,14 +217,14 @@ body {
   margin-top: 10px;
   color: white;
 }
-.admin_main_container .main_content .data .table_head .column .column1 {
+.admin_main_container .main_content .data .table_head .column .book1 {
   width: 100px;
   height: 40px;
   padding-right: 88px;
   margin-top: 10px;
   color: white;
 }
-.admin_main_container .main_content .data .table_head .column .column2 {
+.admin_main_container .main_content .data .table_head .column .book2 {
   text-align: center;
   width: 100px;
   height: 40px;
@@ -239,7 +232,7 @@ body {
   color: white;
   padding-right: 30px;
 }
-.admin_main_container .main_content .data .table_head .column .column3 {
+.admin_main_container .main_content .data .table_head .column .book3 {
   text-align: center;
   width: 155px;
   height: 40px;
@@ -247,21 +240,21 @@ body {
   color: white;
   padding-right: 30px;
 }
-.admin_main_container .main_content .data .table_head .column .column4 {
+.admin_main_container .main_content .data .table_head .column .book4 {
   width: 100px;
   height: 40px;
   padding-right: 30px;
   margin-top: 10px;
   color: white;
 }
-.admin_main_container .main_content .data .table_head .column .column5 {
+.admin_main_container .main_content .data .table_head .column .book5 {
   width: 60px;
   height: 40px;
   padding-right: 55px;
   margin-top: 10px;
   color: white;
 }
-.admin_main_container .main_content .data .table_head .column .column6 {
+.admin_main_container .main_content .data .table_head .column .book6 {
   margin-top: 10px;
   color: white;
   text-align: center;
@@ -269,13 +262,60 @@ body {
   height: 40px;
   padding-right: 20px;
 }
-.admin_main_container .main_content .data .table_head .column .column7 {
+.admin_main_container .main_content .data .table_head .column .book7 {
   margin-top: 10px;
   color: white;
   text-align: center;
   width: 50px;
   height: 40px;
   padding-right: 50px;
+}
+.admin_main_container .main_content .data .table_head_borrow {
+  width: 600px;
+  height: 30px;
+  background-color: rgb(197, 197, 206);
+}
+.admin_main_container .main_content .data .table_head_borrow .column_borrow {
+  width: 50%;
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-between;
+}
+.admin_main_container .main_content .data .table_head_borrow .column_borrow .borrow0 {
+  text-align: center;
+  padding-right: 80px;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_borrow .column_borrow .borrow1 {
+  text-align: center;
+  padding-right: 90px;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_borrow .column_borrow .borrow2 {
+  text-align: center;
+  padding-right: 80px;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_borrow .column_borrow .borrow3 {
+  text-align: center;
+  padding-right: 40px;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: white;
 }
 .admin_main_container .main_content .data .table_body {
   width: 1200px;
@@ -284,7 +324,7 @@ body {
   vertical-align: auto;
   gap: 10px;
 }
-.admin_main_container .main_content .data .table_body .info {
+.admin_main_container .main_content .data .table_body .bookinfo {
   display: flex;
   width: 1200px;
   height: 35px;
@@ -295,62 +335,69 @@ body {
   border-bottom: 2px solid rgba(236, 236, 236, 0.933);
   border-radius: 0px 0px 5px 5px;
 }
-.admin_main_container .main_content .data .table_body .info .bookId {
+.admin_main_container .main_content .data .table_body .bookinfo .book0 {
   text-align: center;
   width: 100px;
   height: 30px;
   font-size: 12px;
 }
-.admin_main_container .main_content .data .table_body .info .bookName {
+.admin_main_container .main_content .data .table_body .bookinfo .book1 {
   text-align: left;
   font-size: 12px;
   width: 200px;
   height: 30px;
 }
-.admin_main_container .main_content .data .table_body .info .bookAuthor {
+.admin_main_container .main_content .data .table_body .bookinfo .book2 {
   text-align: left;
   padding-right: 30px;
   width: 100px;
   height: 30px;
   font-size: 12px;
 }
-.admin_main_container .main_content .data .table_body .info .productionDate {
+.admin_main_container .main_content .data .table_body .bookinfo .book3 {
   width: 120px;
   height: 30px;
   font-size: 12px;
 }
-.admin_main_container .main_content .data .table_body .info .bookStatus {
+.admin_main_container .main_content .data .table_body .bookinfo .book4 {
   text-align: center;
   width: 110px;
   height: 30px;
   font-size: 12px;
   padding-right: 40px;
 }
-.admin_main_container .main_content .data .table_body .info .borrowCount {
+.admin_main_container .main_content .data .table_body .bookinfo .book5 {
   text-align: center;
   width: 60px;
   height: 30px;
   font-size: 12px;
   padding-right: 50px;
 }
-.admin_main_container .main_content .data .table_body .info .bookCategory {
+.admin_main_container .main_content .data .table_body .bookinfo .book6 {
   text-align: center;
   width: 100px;
   height: 30px;
   font-size: 12px;
   padding-right: 65px;
 }
-.admin_main_container .main_content .data .table_body .info .Image {
+.admin_main_container .main_content .data .table_body .bookinfo .book7 {
   text-align: center;
   width: 40px;
   height: 30px;
   font-size: 12px;
 }
-.admin_main_container .main_content .data .table_body .info .listbuttons {
+.admin_main_container .main_content .data .table_body .bookinfo .book7 img {
+  display: "grid";
+  width: "30px";
+  height: "30px";
+  justify-content: "center";
+  align-items: center;
+}
+.admin_main_container .main_content .data .table_body .bookinfo .listbuttons {
   display: flex;
   margin-left: 30px;
 }
-.admin_main_container .main_content .data .table_body .info .listbuttons .deleteBtn {
+.admin_main_container .main_content .data .table_body .bookinfo .listbuttons .deleteBtn {
   width: 50px;
   height: 30px;
   margin-right: 3px;
@@ -359,12 +406,12 @@ body {
   border-radius: 7px 7px 7px 7px;
   border: none;
 }
-.admin_main_container .main_content .data .table_body .info .listbuttons .deleteBtn:hover {
+.admin_main_container .main_content .data .table_body .bookinfo .listbuttons .deleteBtn:hover {
   color: white;
   cursor: pointer;
   background-color: rgb(158, 0, 0);
 }
-.admin_main_container .main_content .data .table_body .info .listbuttons .editBtn {
+.admin_main_container .main_content .data .table_body .bookinfo .listbuttons .editBtn {
   width: 50px;
   height: 30px;
   margin-right: 3px;
@@ -373,25 +420,75 @@ body {
   border-radius: 7px 7px 7px 7px;
   border: none;
 }
-.admin_main_container .main_content .data .table_body .info .listbuttons .editBtn:hover {
+.admin_main_container .main_content .data .table_body .bookinfo .listbuttons .editBtn:hover {
   color: rgb(255, 255, 255);
   cursor: pointer;
   background-color: rgb(4, 103, 53);
 }
-.admin_main_container .main_content .buttons {
-  margin-left: 550px;
-  margin-top: 20px;
-  display: flex;
-  gap: 15px;
-}
-.admin_main_container .main_content .buttons button {
+.admin_main_container .main_content .data .table_body .buttons button {
   width: 100px;
   height: 30px;
   background-color: rgb(230, 230, 230);
   border-radius: 7px 7px 7px 7px;
   border: none;
 }
-.admin_main_container .main_content .buttons button:hover {
+.admin_main_container .main_content .data .table_body .buttons button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(68, 68, 68);
+}
+.admin_main_container .main_content .data .table_body_borrow {
+  width: 600px;
+  height: 100%;
+  margin-top: 20px;
+  vertical-align: auto;
+  gap: 10px;
+}
+.admin_main_container .main_content .data .table_body_borrow .borrowinfo {
+  display: flex;
+  width: 600px;
+  height: 35px;
+  gap: 5px;
+  align-items: center;
+  border-left: 1px solid rgba(236, 236, 236, 0.474);
+  border-right: 1px solid rgba(236, 236, 236, 0.489);
+  border-bottom: 2px solid rgba(236, 236, 236, 0.933);
+  border-radius: 0px 0px 5px 5px;
+}
+.admin_main_container .main_content .data .table_body_borrow .borrowinfo .borrow0 {
+  text-align: center;
+  padding-right: 55px;
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+}
+.admin_main_container .main_content .data .table_body_borrow .borrowinfo .borrow1 {
+  text-align: left;
+  font-size: 12px;
+  width: 120px;
+  height: 30px;
+  padding-right: 20px;
+}
+.admin_main_container .main_content .data .table_body_borrow .borrowinfo .borrow2 {
+  text-align: left;
+  padding-right: 50px;
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+}
+.admin_main_container .main_content .data .table_body_borrow .borrowinfo .borrow3 {
+  width: 120px;
+  height: 30px;
+  font-size: 12px;
+}
+.admin_main_container .main_content .data .table_body_borrow .buttons button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(230, 230, 230);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .data .table_body_borrow .buttons button:hover {
   cursor: pointer;
   color: white;
   background-color: rgb(68, 68, 68);
@@ -474,7 +571,7 @@ body {
   width: 50px;
   font-size: 14px;
 }
-.Sheet .createBtn {
+.Sheet .createSheetBtn {
   position: relative;
   left: 50px;
   bottom: 40px;

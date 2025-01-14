@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-//admin 
+//admin
 export const ADMIN_USER_LOGIN = gql`
   mutation adminUserLogin($email: String!, $password: String!) {
     AdminUserLogin(email: $email, password: $password) {
@@ -179,6 +179,43 @@ export const UPDATE_BORROW_COUNT = gql`
     }
   }
 `;
+export const UPDATE_BOOK_WITH_ADMIN = gql`
+  mutation updateBookWithAdmin(
+    $bookid: String!
+    $bookname: String!
+    $bookauthor: String!
+    $productiondate: String!
+    $bookstatus: String!
+    $borrowcount: Int!
+    $bookcategory: String!
+    $bookimage: String!
+  ) {
+    updateBook(
+      bookid: $bookid
+      bookname: $bookname
+      bookauthor: $bookauthor
+      productiondate: $productiondate
+      bookstatus: $bookstatus
+      borrowcount: $borrowcount
+      bookcategory: $bookcategory
+      bookimage: $bookimage
+    ) {
+      status
+      message
+      data {
+        bookid
+        bookname
+        bookauthor
+        productiondate
+        bookstatus
+        borrowcount
+        bookcategory
+        bookimage
+      }
+    }
+  }
+`;
+
 
 export const DELETE_BOOK = gql`
   mutation deleteBook($bookid: String!) {

@@ -99,6 +99,7 @@ const AdminMutationResolvers = {
         createBook: async (parent, { bookid, bookname, bookauthor, productiondate, bookstatus, borrowcount, bookcategory, bookimage }, { db }) => {
             try {
                 const res = await db.query('INSERT INTO "BookDetails" (bookid, bookname, bookauthor, productiondate, bookstatus, borrowcount, bookcategory,bookimage) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *', [bookid, bookname, bookauthor, productiondate, bookstatus, borrowcount, bookcategory, bookimage])
+                
                 return {
                     status:200,
                     message:"create book successfully",
@@ -130,6 +131,18 @@ const AdminMutationResolvers = {
                 }
             } catch (error) {
                 throw new ApolloError(`fail to update book status ${error}`)
+            }
+        },
+        updateBook: async (parent, { bookid, bookname, bookauthor, productiondate, bookstatus, borrowcount, bookcategory, bookimage }, { db }) => {
+            try {
+                const res = await db.query('UPDATE "BookDetails" SET bookname=$2, bookauthor=$3, productiondate=$4, bookstatus=$5, borrowcount=$6, bookcategory=$7,bookimage=$8 WHERE bookid = $1 RETURNING *', [bookid, bookname, bookauthor, productiondate, bookstatus, borrowcount, bookcategory, bookimage])      
+                return {
+                    status:200,
+                    message:"update book successfully",
+                    data:res.rows
+                }
+            } catch (error) {
+                throw new ApolloError(`fail to create book ${error}`)
             }
         },
         deleteBook: async (parent, { bookid }, { db }) => {
