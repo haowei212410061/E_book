@@ -10,11 +10,11 @@ const AdminQueryResolvers = {
                 throw new ApolloError('fail to query users')
             }
         },
-        SingleUser: async (parent, { email}, { db }) => {
+        SingleUser: async (parent, { column,info}, { db }) => {
             try {
-                const res = await db.query('SELECT * FROM "Users" WHERE email = $1', [email])
+                const res = await db.query(`SELECT * FROM "Users" WHERE ${column} = $1`, [info])
                 console.log(res)
-                return res.rows[0]
+                return res.rows
             } catch (error) {
                 throw new ApolloError('fail to query singleusers')
             }
@@ -31,9 +31,9 @@ const AdminQueryResolvers = {
                 throw new ApolloError('fail to query admin users')
             }
         },
-        SingleAdminUser: async (parent, { adminid }, { db }) => {
+        SingleAdminUser: async (parent, { column,info }, { db }) => {
             try {
-                const res = await db.query('SELECT * FROM "AdminUser" WHERE adminid = $1', [adminid]);
+                const res = await db.query(`SELECT * FROM "AdminUser" WHERE ${column} = $1`, [info]);
                 return {
                     status:200,
                     message:"query single admin users successfully",
@@ -53,6 +53,19 @@ const AdminQueryResolvers = {
                  }
             } catch (error) {
                 throw new ApolloError('fail to query books')
+            }
+        },
+
+        BooksWithProductionDate:async (parent,{start,end},{db})=>{
+            try{
+                const res = await db.query('SELECT * FROM "BookDetails" WHERE productiondate BETWEEN $1 AND $2',[start,end])
+                return {
+                    status:200,
+                    message:"query books successfully",
+                    data:res.rows
+                }
+            }catch(error){
+                throw new ApolloError('fail to query books with production date')
             }
         },
         

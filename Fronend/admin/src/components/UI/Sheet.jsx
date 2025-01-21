@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
 import { useBookAPI } from "../../hooks/useBookAPI";
 import { useToast } from "../../hooks/useToast";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,6 @@ function Sheet({ buttonname, closeWindowFn, windowStyle, color, bookid }) {
     createBookWithAdmin,
     getAllBookWithAdmin,
     publicImageUrl,
-    getSingleBook,
     updateBook,
   } = useBookAPI();
   const { error } = useToast();
@@ -31,8 +30,6 @@ function Sheet({ buttonname, closeWindowFn, windowStyle, color, bookid }) {
     bookcategory: "",
     bookimage: "",
   });
-
-  
 
   async function addChangeListener(event) {
     const { name, value } = event.target;
@@ -65,78 +62,62 @@ function Sheet({ buttonname, closeWindowFn, windowStyle, color, bookid }) {
         ...prevData,
         [name]: value,
       }));
-      console.log(value);
     }
   }
   const handleOpenCreateWindow = () => {
-    formRef.current.reset(); 
+    formRef.current.reset();
   };
 
   async function createBook(event) {
-    try {
-      if (buttonname === "create") {
+    event.preventDefault();
+    if (buttonname === "create") {
+      try {
         for (let field in bookInfo) {
           if (field === "borrowcount") {
             continue;
-          } else {
-            if (bookInfo[field].length === 0) {
-              return error("有必要欄位未輸入");
-            }
+          } else if (bookInfo[field].length === 0) {
+            error("有必要欄位未輸入");
+            return;
           }
         }
-        console.log(bookInfo);
-        const oldData = await getAllBookWithAdmin();
         const newBook = await createBookWithAdmin(bookInfo);
+        const oldData = await getAllBookWithAdmin();
         dispatch(setBook([...newBook, ...oldData]));
-        closeWindowFn("none", event);
-        handleOpenCreateWindow();
+      } catch (error) {
+        console.log(error);
       }
-      if (buttonname === "edit") {
-        try {
-          const { data } = await client.mutate({
-            mutation: GET_SINGLE_BOOK_WITH_ADMIN,
-            variables: {
-              column: "bookid",
-              info: bookid,
-            },
-          });
-          const res = data.SingleBook.data;
-          for (let field in bookInfo) {
-            if (field === "borrowcount" && bookInfo["borrowcount"] !== 0) {
-              res[0]["borrowcount"] = bookInfo["borrowcount"];
-            } else if (bookInfo[field].length !== 0) {
-              res[0][field] = bookInfo[field];
-            }
-          }
-          const updateRes = await updateBook(res[0], bookid);
-          const old = await getAllBookWithAdmin();
-          const oldRes = old.filter(
-            (item) => item.bookid !== updateRes[0].bookid
-          );
-          success("已更新一筆資料");
-          dispatch(setBook([...updateRes, ...oldRes]));
-          setBookInfo({
-            bookid: "B" + nanoid().slice(0, 9),
-            bookname: "",
-            bookauthor: "",
-            productiondate: "",
-            bookstatus: "Borrowed",
-            borrowcount: 0,
-            bookcategory: "",
-            bookimage: "",
-          });
-          closeWindowFn("none", event);
-          handleOpenCreateWindow();
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    } catch (error) {
-      console.log(error);
     }
+    if (buttonname === "edit") {
+      try {
+        const { data } = await client.mutate({
+          mutation: GET_SINGLE_BOOK_WITH_ADMIN,
+          variables: {
+            column: "bookid",
+            info: bookid,
+          },
+        });
+        const res = data.SingleBook.data;
+        console.log(res);
+        for (let field in bookInfo) {
+          if (field === "borrowcount" && bookInfo["borrowcount"] !== 0) {
+            res[0]["borrowcount"] = bookInfo["borrowcount"];
+          } else if (bookInfo[field].length !== 0) {
+            res[0][field] = bookInfo[field];
+          } else {
+            continue;
+          }
+        }
+        
+        const updateRes = await updateBook(res[0], bookid);
+        console.log(updateRes);
+        success("已更新一筆資料");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    closeWindowFn("none", event);
+    handleOpenCreateWindow();
   }
-
-  
 
   return (
     <form ref={formRef} className="Sheet" style={{ display: windowStyle }}>

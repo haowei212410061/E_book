@@ -1,9 +1,8 @@
-import { useCallback } from "react";
 import { client } from "../main";
-import { GET_ALL_BOOK_WITH_ADMIN } from "../Graphql api/query";
+import { GET_ALL_BOOK_WITH_ADMIN, GET_BOOK_WITH_PRODUCTIONDATE } from "../Graphql api/query";
 import { CREATE_BOOK, DELETE_BOOK, GET_SINGLE_BOOK_WITH_ADMIN ,UPDATE_BOOK_WITH_ADMIN} from "../Graphql api/mutation";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllBook, setBook } from "../state/bookdetail/booksSlice";
+import { setBook } from "../state/bookdetail/booksSlice";
 import { useToast } from "./useToast";
 
 export function useBookAPI() {
@@ -16,6 +15,7 @@ export function useBookAPI() {
       const { data } = await client.query({
         query: GET_ALL_BOOK_WITH_ADMIN,
       });
+      dispatch(setBook(data.AdminBooks.data))
       return data.AdminBooks.data;
     } catch (error) {
       console.log(error);
@@ -98,10 +98,11 @@ export function useBookAPI() {
         });
         console.log(column,info)
         const res = response.data.SingleBook.data;
+        const all = await getAllBookWithAdmin();
         console.log(res)
         if (res.length === 0) {
-          dispatch(setBook([]));
           error("No data");
+          dispatch(setBook(all))
         } else {
           console.log(res)
           dispatch(setBook(res));
@@ -135,12 +136,28 @@ export function useBookAPI() {
     }
   }
 
+  const getBookWithDate = async(start,end)=>{
+    try{
+      const {data} = await client.query({
+        query:GET_BOOK_WITH_PRODUCTIONDATE,
+        variables:{
+          start:start,
+          end:end
+        }
+      })
+      return data.BooksWithProductionDate.data
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return {
     getAllBookWithAdmin,
     createBookWithAdmin,
     deleteBookWithAdmin,
     publicImageUrl,
     getSingleBook,
-    updateBook
+    updateBook,
+    getBookWithDate
   };
 }

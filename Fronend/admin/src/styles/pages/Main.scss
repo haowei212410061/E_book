@@ -20,7 +20,7 @@ body {
     position: relative;
     left: 0;
     display: flex;
-    width: 100%;
+    width: 105%;
     height: 100%;
     background-color: rgb(197, 197, 206);
 
@@ -240,9 +240,50 @@ body {
                 cursor: pointer;
                 background-color: rgb(39, 121, 235);
             }
+
+            .reloadBtn {
+                display: block;
+                margin-top: 40px;
+                width: 100px;
+                height: 30px;
+                color: white;
+                background-color: rgb(104, 116, 241);
+                border-radius: 7px 7px 7px 7px;
+                border: none;
+            }
+
+            .reloadBtn:hover {
+                color: black;
+                cursor: pointer;
+                background-color: rgb(39, 121, 235);
+            }
+
+
+
+            .export {
+                position: relative;
+                top: 20px;
+                width: 100px;
+                height: 30px;
+                color: white;
+                background-color: rgb(104, 116, 241);
+                border-radius: 7px 7px 7px 7px;
+                border: none;
+                text-align: center;
+                padding-top: 8px;
+                padding-left: 15px;
+            }
+
+            .export:hover {
+                color: black;
+                cursor: pointer;
+                background-color: rgb(39, 121, 235);
+            }
+
         }
 
         .data {
+            table-layout: fixed;
 
             .table_head {
                 width: 95%;
@@ -385,8 +426,118 @@ body {
                 }
             }
 
+            .table_head_admin {
+                width: 900px;
+                height: 30px;
+                background-color: rgb(197, 197, 206);
+
+                .column_admin {
+                    width: 100%;
+                    display: flex;
+
+                    .admin0 {
+                        text-align: left;
+                        width: 100px;
+                        height: 30px;
+                        padding-right: 65px;
+                        margin-top: 10px;
+                        margin-left: 5px;
+                        color: white;
+                    }
+
+                    .admin1 {
+                        text-align: left;
+                        width: 80px;
+                        height: 30px;
+                        margin-top: 10px;
+                        color: white;
+                        padding-right: 120px;
+                    }
+
+                    .admin2 {
+                        text-align: center;
+                        padding-right: 55px;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        margin-left: 5px;
+                        color: white;
+                    }
+
+                    .admin3 {
+                        text-align: center;
+                        padding-right: 40px;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        margin-left: 5px;
+                        color: white;
+                    }
+
+                }
+            }
+
+            .table_head_user {
+                width: 700px;
+                height: 30px;
 
 
+                .column_user {
+                    width: 700px;
+                    display: flex;
+                    background-color: rgb(196, 196, 196);
+
+                    .user0 {
+                        text-align: left;
+                        width: 100px;
+                        height: 30px;
+                        padding-right: 50px;
+                        margin-top: 10px;
+                        margin-left: 5px;
+                        color: white;
+                    }
+
+                    .user1 {
+                        text-align: left;
+                        width: 80px;
+                        height: 30px;
+                        margin-top: 10px;
+                        color: white;
+                        padding-right: 80px;
+                    }
+
+                    .user2 {
+                        text-align: left;
+                        padding-right: 60px;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        color: white;
+                    }
+
+                    .user3 {
+                        text-align: center;
+                        padding-right: 100px;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        color: white;
+                    }
+
+                    .user4 {
+                        text-align: center;
+                        width: 70px;
+                        height: 30px;
+                        margin-top: 10px;
+                        color: white;
+                    }
+
+                }
+            }
+
+
+
+            //資料
             .table_body {
                 width: 1200px;
                 height: 100%;
@@ -533,7 +684,6 @@ body {
                 }
             }
 
-
             .table_body_borrow {
                 width: 600px;
                 height: 100%;
@@ -605,17 +755,314 @@ body {
                 }
             }
 
+            .table_body_admin {
+                width: 900px;
+                height: 100%;
+                margin-top: 20px;
+                vertical-align: auto;
+                gap: 10px;
 
+
+                .admininfo {
+                    display: flex;
+                    width: 900px;
+                    height: 45px;
+                    gap: 5px;
+                    align-items: center;
+                    border-left: 1px solid rgba(236, 236, 236, 0.474);
+                    border-right: 1px solid rgba(236, 236, 236, 0.489);
+                    border-bottom: 2px solid rgba(236, 236, 236, 0.933);
+                    border-radius: 0px 0px 5px 5px;
+
+                    .admin0 {
+                        text-align: left;
+                        padding-left: 5px;
+                        padding-right: 55px;
+                        width: 120px;
+                        height: 30px;
+                        font-size: 12px;
+
+                    }
+
+                    .admin1 {
+                        text-align: left;
+                        font-size: 12px;
+                        width: 200px;
+                        height: 30px;
+                        padding-right: 20px;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
+                    }
+
+
+                    .admin2 {
+                        text-align: left;
+                        padding-right: 50px;
+                        width: 100px;
+                        height: 30px;
+                        font-size: 12px;
+                    }
+
+                    .admin3 {
+                        text-align: left;
+                        width: 200px;
+                        height: 30px;
+                        font-size: 12px;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
+
+                    }
+
+                    .listbuttons {
+                        display: flex;
+                        height: 40px;
+                        margin-left: 30px;
+
+                        .deleteBtn {
+                            width: 50px;
+                            height: 40px;
+                            margin-right: 3px;
+                            background-color: rgb(215, 73, 73);
+                            color: white;
+                            border-radius: 7px 7px 7px 7px;
+                            border: none;
+                        }
+
+                        .deleteBtn:hover {
+                            color: white;
+                            cursor: pointer;
+                            background-color: rgb(158, 0, 0);
+                        }
+
+                        .editPassword {
+                            width: 50px;
+                            height: 40px;
+                            margin-right: 3px;
+                            background-color: rgb(57, 163, 110);
+                            color: white;
+                            border-radius: 7px 7px 7px 7px;
+                            border: none;
+                        }
+
+                        .editPassword:hover {
+                            color: rgb(255, 255, 255);
+                            cursor: pointer;
+                            background-color: rgb(4, 103, 53);
+                        }
+
+                        .editEmail {
+                            width: 50px;
+                            height: 40px;
+                            margin-right: 3px;
+                            background-color: rgb(57, 163, 110);
+                            color: white;
+                            border-radius: 7px 7px 7px 7px;
+                            border: none;
+                        }
+
+                        .editEmail:hover {
+                            color: rgb(255, 255, 255);
+                            cursor: pointer;
+                            background-color: rgb(4, 103, 53);
+                        }
+
+                        .disable {
+                            width: 50px;
+                            height: 40px;
+                            margin-right: 3px;
+                            background-color: gray;
+                            color: white;
+                            border-radius: 7px 7px 7px 7px;
+                            border: none;
+                        }
+                    }
+
+                }
+
+                .buttons {
+
+                    button {
+                        width: 100px;
+                        height: 30px;
+                        background-color: rgb(230, 230, 230);
+                        border-radius: 7px 7px 7px 7px;
+                        border: none;
+                    }
+
+                    button:hover {
+                        cursor: pointer;
+                        color: white;
+                        background-color: rgb(68, 68, 68);
+                    }
+                }
+            }
+
+            .table_body_user {
+                width: 700px;
+                height: 100%;
+                margin-top: 20px;
+                vertical-align: auto;
+                gap: 10px;
+
+
+                .userinfo {
+                    display: flex;
+                    width: 700px;
+                    height: 45px;
+                    gap: 5px;
+                    align-items: center;
+                    border-left: 1px solid rgba(236, 236, 236, 0.474);
+                    border-right: 1px solid rgba(236, 236, 236, 0.489);
+                    border-bottom: 2px solid rgba(236, 236, 236, 0.933);
+                    border-radius: 0px 0px 5px 5px;
+
+                    .user0 {
+                        text-align: left;
+                        padding-left: 5px;
+                        width: 120px;
+                        height: 30px;
+                        font-size: 12px;
+                        padding-right: 60px;
+
+                    }
+
+                    .user1 {
+                        text-align: left;
+                        font-size: 12px;
+                        padding-right: 20px;
+                        width: 200px;
+                        height: 30px;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
+                    }
+
+
+                    .user2 {
+                        text-align: left;
+                        padding-right: 40px;
+                        width: 150px;
+                        height: 30px;
+                        font-size: 12px;
+                    }
+
+                    .user3 {
+                        text-align: left;
+                        width: 250px;
+                        height: 30px;
+                        font-size: 12px;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
+
+                    }
+
+                    .user4 {
+                        text-align: left;
+                        width: 70px;
+                        height: 30px;
+                        font-size: 12px;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
+
+                    }
+
+
+
+                }
+
+                .buttons {
+
+                    button {
+                        width: 100px;
+                        height: 30px;
+                        background-color: rgb(230, 230, 230);
+                        border-radius: 7px 7px 7px 7px;
+                        border: none;
+                    }
+
+                    button:hover {
+                        cursor: pointer;
+                        color: white;
+                        background-color: rgb(68, 68, 68);
+                    }
+                }
+            }
 
 
         }
+    }
+
+    .BookReport {
+        display: flex;
+        position: relative;
+        top: 20px;
+        left: 10px;
+        width: 300px;
+        height: 30px;
+        justify-items: center;
+        align-items: center;
+
+        border-radius: 0px 5px 5px 0px;
+
+        p {
+            position: relative;
+            text-align: center;
+            width: 20px;
+            height: 25px;
+            font-size: 16px;
+            padding-right: 10px;
+            padding-left: 10px;
+            z-index: 9;
+            padding-top: 5px;
+            background-color: rgba(231, 231, 231, 0.455);
+        }
+
+        input {
+            position: relative;
+            z-index: 1;
+            width: 150px;
+            height: 100%;
+            outline: none;
+            background-color: rgba(231, 231, 231, 0.455);
+        }
 
 
+        .start {
+            border: none;
+        }
 
+        .end {
+            border: none;
+        }
 
+        .export {
+            width: 100%;
+            height: 100%;
+            margin-left: 5px;
+
+            button {
+                display: block;
+                width: 100px;
+                height: 30px;
+                color: white;
+                background-color: rgb(104, 116, 241);
+                border-radius: 7px 7px 7px 7px;
+                border: none;
+                text-align: center;
+                padding-top: 8px;
+                padding-left: 15px;
+            }
+
+            .button:hover {
+                color: black;
+                cursor: pointer;
+                background-color: rgb(39, 121, 235);
+            }
+        }
 
 
     }
+
+
 
 }
 
@@ -727,6 +1174,88 @@ body {
         color: white;
         border-radius: 5px 5px 5px 5px;
 
+    }
+}
+
+.adminUserSheet {
+    display: none;
+    width: 400px;
+    height: 250px;
+    background-color: rgb(249, 249, 249);
+    position: absolute;
+    z-index: 100;
+    top: 50px;
+    left: 400px;
+    border-radius: 15px 15px 0px 0px;
+
+    .close {
+        width: 100%;
+        height: 40px;
+        background-color: rgb(35, 149, 255);
+        border-radius: 15px 15px 0px 0px;
+
+        .closeBtn {
+            font-size: 20px;
+            position: relative;
+            left: 360px;
+            top: 7px;
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            color: white;
+        }
+    }
+
+    .title {
+        display: grid;
+        width: 200px;
+        height: 70px;
+        margin-left: 30px;
+    }
+
+    .content {
+        position: relative;
+        width: 350px;
+        height: 40px;
+        margin-left: 30px;
+        top: -20px;
+
+    }
+
+    .sheet_content {
+        width: 100%;
+        height: 100%;
+
+        input {
+            margin-left: 30px;
+            width: 327px;
+            height: 25px;
+            border: none;
+            border-radius: 7px 7px 7px 7px;
+        }
+
+        div {
+            .reset {
+                width: 327px;
+                height: 25px;
+                margin-left: 30px;
+                margin-top: 10px;
+                color: white;
+                background-color: rgb(104, 116, 241);
+                border-radius: 7px 7px 7px 7px;
+                border: none;
+            }
+
+            .create {
+                width: 327px;
+                height: 25px;
+                margin-left: 30px;
+                margin-top: 10px;
+                color: white;
+                background-color: rgb(104, 116, 241);
+                border-radius: 7px 7px 7px 7px;
+                border: none;
+            }
+        }
     }
 }
 

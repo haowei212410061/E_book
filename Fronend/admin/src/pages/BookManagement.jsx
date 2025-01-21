@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../styles/global style/global.css";
 import "../styles/pages/Main.css";
 import adminUserImage from "../assets/Admin.png";
-import { GET_ALL_BOOK_WITH_ADMIN } from "../Graphql api/query";
 import ColumnTitle from "../components/UI/ColumnTitle";
 import DataList from "../components/UI/DataList";
 import Navbar from "../components/Navbar";
@@ -11,7 +10,6 @@ import Filter from "../components/Filter";
 import ControlPageBtn from "../components/UI/ControlPageBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { setBook } from "../state/bookdetail/booksSlice";
-import { client } from "../main";
 import { useBookAPI } from "../hooks/useBookAPI";
 import Sheet from "../components/UI/Sheet";
 import Windowbackground from "../components/UI/WindowBackground";
@@ -19,16 +17,6 @@ import Windowbackground from "../components/UI/WindowBackground";
 function getUserLocalStorage() {
   const user = JSON.parse(localStorage.getItem("UserLogin"));
   return { username: user.username, email: user.email };
-}
-async function getAllBook() {
-  try {
-    const { data } = await client.query({
-      query: GET_ALL_BOOK_WITH_ADMIN,
-    });
-    return data.AdminBooks.data;
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 function BookManagement() {
@@ -40,7 +28,7 @@ function BookManagement() {
   const [windowStatus, setWindowStatus] = useState("");
   const [backgroundStyle, setbackgroundStyle] = useState("none");
   const [updateBookid, setUpdateBookId] = useState("");
-  const { deleteBookWithAdmin, getSingleBook } = useBookAPI();
+  const {getAllBookWithAdmin,deleteBookWithAdmin, getSingleBook } = useBookAPI();
   const columns = [
     "bookname",
     "bookauthor",
@@ -59,24 +47,16 @@ function BookManagement() {
     display: "flex",
     gap: "15px",
     marginTop: "10px",
-    marginLeft:"500px",
-  }
+    marginLeft: "500px",
+  };
 
   useEffect(() => {
-    getAllBook().then((data) => {
+    getAllBookWithAdmin().then((data) => {
+      console.log(data)
       dispatch(setBook(data));
     });
   }, []);
 
-  function selectFunc(event) {
-    const column = event.target.value;
-    console.log(column);
-    setColumn(column);
-  }
-  function addEditChangeListener(event) {
-    const userInput = event.target.value;
-    setInput(userInput);
-  }
   function addPageNumber() {
     const newCount = pageNumber + 10;
     if (newCount < books.length) {
@@ -127,6 +107,8 @@ function BookManagement() {
           ShouldDisplay={"block"}
           options={columns}
           defaultValue={"bookname"}
+          reloadFn={getAllBookWithAdmin}
+          exportDisplay={"none"}
         />
         {windowStatus === "create" ? (
           <Sheet
@@ -151,7 +133,7 @@ function BookManagement() {
               {books.length === 0 ? (
                 <th>loading...</th>
               ) : (
-                <ColumnTitle data={books} columnStyle={"book"}/>
+                <ColumnTitle data={books} columnStyle={"book"} />
               )}
             </tr>
           </thead>
@@ -162,6 +144,7 @@ function BookManagement() {
               </tr>
             ) : (
               <DataList
+                database={"book"}
                 buttonStyle={"block"}
                 data={books}
                 page={pageNumber}
@@ -170,10 +153,13 @@ function BookManagement() {
                 columnStyle={"book"}
               />
             )}
-            <ControlPageBtn buttonStyle={buttonStyle} reduce={reducePageNumber} add={addPageNumber} />
+            <ControlPageBtn
+              buttonStyle={buttonStyle}
+              reduce={reducePageNumber}
+              add={addPageNumber}
+            />
           </tbody>
         </table>
-        
       </section>
     </div>
   );

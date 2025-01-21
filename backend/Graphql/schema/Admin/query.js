@@ -14,12 +14,13 @@ const UserQueryDefs = gql`
   type Query {
     
     Users: [User]
-    SingleUser(email: String): User
+    SingleUser(column: String! info:String!): [User]
 
     AdminUsers: AdminUserResponse
-    SingleAdminUser(adminid: String!): AdminUserResponse
+    SingleAdminUser(column: String! info:String!): AdminUserResponse
 
     AdminBooks: AdminBookDetailResponse
+    BooksWithProductionDate(start:String!,end:String!):AdminBookDetailResponse
   
     BorrowRecords:AdminBorrowRecordsResponse
     SingleBorrowRecord(column: String, info: String): AdminBorrowRecordsResponse

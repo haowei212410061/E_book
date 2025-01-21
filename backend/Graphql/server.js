@@ -38,8 +38,9 @@ async function startServer() {
     context: () => ({
       db: CLOUD_POSTGRES
     }),
-
-    //處理apollo error的返回格式 
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
     formatError:(error)=>{
       return {
         message: error.message,

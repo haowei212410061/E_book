@@ -18,7 +18,7 @@ body {
   position: relative;
   left: 0;
   display: flex;
-  width: 100%;
+  width: 105%;
   height: 100%;
   background-color: rgb(197, 197, 206);
 }
@@ -197,6 +197,42 @@ body {
   cursor: pointer;
   background-color: rgb(39, 121, 235);
 }
+.admin_main_container .main_content .filter .reloadBtn {
+  display: block;
+  margin-top: 40px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: rgb(104, 116, 241);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .filter .reloadBtn:hover {
+  color: black;
+  cursor: pointer;
+  background-color: rgb(39, 121, 235);
+}
+.admin_main_container .main_content .filter .export {
+  position: relative;
+  top: 20px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: rgb(104, 116, 241);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+  text-align: center;
+  padding-top: 8px;
+  padding-left: 15px;
+}
+.admin_main_container .main_content .filter .export:hover {
+  color: black;
+  cursor: pointer;
+  background-color: rgb(39, 121, 235);
+}
+.admin_main_container .main_content .data {
+  table-layout: fixed;
+}
 .admin_main_container .main_content .data .table_head {
   width: 95%;
   height: 30px;
@@ -315,6 +351,99 @@ body {
   height: 30px;
   margin-top: 10px;
   margin-left: 5px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_admin {
+  width: 900px;
+  height: 30px;
+  background-color: rgb(197, 197, 206);
+}
+.admin_main_container .main_content .data .table_head_admin .column_admin {
+  width: 100%;
+  display: flex;
+}
+.admin_main_container .main_content .data .table_head_admin .column_admin .admin0 {
+  text-align: left;
+  width: 100px;
+  height: 30px;
+  padding-right: 65px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_admin .column_admin .admin1 {
+  text-align: left;
+  width: 80px;
+  height: 30px;
+  margin-top: 10px;
+  color: white;
+  padding-right: 120px;
+}
+.admin_main_container .main_content .data .table_head_admin .column_admin .admin2 {
+  text-align: center;
+  padding-right: 55px;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_admin .column_admin .admin3 {
+  text-align: center;
+  padding-right: 40px;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_user {
+  width: 700px;
+  height: 30px;
+}
+.admin_main_container .main_content .data .table_head_user .column_user {
+  width: 700px;
+  display: flex;
+  background-color: rgb(196, 196, 196);
+}
+.admin_main_container .main_content .data .table_head_user .column_user .user0 {
+  text-align: left;
+  width: 100px;
+  height: 30px;
+  padding-right: 50px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_user .column_user .user1 {
+  text-align: left;
+  width: 80px;
+  height: 30px;
+  margin-top: 10px;
+  color: white;
+  padding-right: 80px;
+}
+.admin_main_container .main_content .data .table_head_user .column_user .user2 {
+  text-align: left;
+  padding-right: 60px;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_user .column_user .user3 {
+  text-align: center;
+  padding-right: 100px;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  color: white;
+}
+.admin_main_container .main_content .data .table_head_user .column_user .user4 {
+  text-align: center;
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
   color: white;
 }
 .admin_main_container .main_content .data .table_body {
@@ -493,6 +622,253 @@ body {
   color: white;
   background-color: rgb(68, 68, 68);
 }
+.admin_main_container .main_content .data .table_body_admin {
+  width: 900px;
+  height: 100%;
+  margin-top: 20px;
+  vertical-align: auto;
+  gap: 10px;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo {
+  display: flex;
+  width: 900px;
+  height: 45px;
+  gap: 5px;
+  align-items: center;
+  border-left: 1px solid rgba(236, 236, 236, 0.474);
+  border-right: 1px solid rgba(236, 236, 236, 0.489);
+  border-bottom: 2px solid rgba(236, 236, 236, 0.933);
+  border-radius: 0px 0px 5px 5px;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .admin0 {
+  text-align: left;
+  padding-left: 5px;
+  padding-right: 55px;
+  width: 120px;
+  height: 30px;
+  font-size: 12px;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .admin1 {
+  text-align: left;
+  font-size: 12px;
+  width: 200px;
+  height: 30px;
+  padding-right: 20px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .admin2 {
+  text-align: left;
+  padding-right: 50px;
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .admin3 {
+  text-align: left;
+  width: 200px;
+  height: 30px;
+  font-size: 12px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .listbuttons {
+  display: flex;
+  height: 40px;
+  margin-left: 30px;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .listbuttons .deleteBtn {
+  width: 50px;
+  height: 40px;
+  margin-right: 3px;
+  background-color: rgb(215, 73, 73);
+  color: white;
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .listbuttons .deleteBtn:hover {
+  color: white;
+  cursor: pointer;
+  background-color: rgb(158, 0, 0);
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .listbuttons .editPassword {
+  width: 50px;
+  height: 40px;
+  margin-right: 3px;
+  background-color: rgb(57, 163, 110);
+  color: white;
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .listbuttons .editPassword:hover {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  background-color: rgb(4, 103, 53);
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .listbuttons .editEmail {
+  width: 50px;
+  height: 40px;
+  margin-right: 3px;
+  background-color: rgb(57, 163, 110);
+  color: white;
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .listbuttons .editEmail:hover {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  background-color: rgb(4, 103, 53);
+}
+.admin_main_container .main_content .data .table_body_admin .admininfo .listbuttons .disable {
+  width: 50px;
+  height: 40px;
+  margin-right: 3px;
+  background-color: gray;
+  color: white;
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .data .table_body_admin .buttons button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(230, 230, 230);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .data .table_body_admin .buttons button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(68, 68, 68);
+}
+.admin_main_container .main_content .data .table_body_user {
+  width: 700px;
+  height: 100%;
+  margin-top: 20px;
+  vertical-align: auto;
+  gap: 10px;
+}
+.admin_main_container .main_content .data .table_body_user .userinfo {
+  display: flex;
+  width: 700px;
+  height: 45px;
+  gap: 5px;
+  align-items: center;
+  border-left: 1px solid rgba(236, 236, 236, 0.474);
+  border-right: 1px solid rgba(236, 236, 236, 0.489);
+  border-bottom: 2px solid rgba(236, 236, 236, 0.933);
+  border-radius: 0px 0px 5px 5px;
+}
+.admin_main_container .main_content .data .table_body_user .userinfo .user0 {
+  text-align: left;
+  padding-left: 5px;
+  width: 120px;
+  height: 30px;
+  font-size: 12px;
+  padding-right: 60px;
+}
+.admin_main_container .main_content .data .table_body_user .userinfo .user1 {
+  text-align: left;
+  font-size: 12px;
+  padding-right: 20px;
+  width: 200px;
+  height: 30px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.admin_main_container .main_content .data .table_body_user .userinfo .user2 {
+  text-align: left;
+  padding-right: 40px;
+  width: 150px;
+  height: 30px;
+  font-size: 12px;
+}
+.admin_main_container .main_content .data .table_body_user .userinfo .user3 {
+  text-align: left;
+  width: 250px;
+  height: 30px;
+  font-size: 12px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.admin_main_container .main_content .data .table_body_user .userinfo .user4 {
+  text-align: left;
+  width: 70px;
+  height: 30px;
+  font-size: 12px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.admin_main_container .main_content .data .table_body_user .buttons button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(230, 230, 230);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.admin_main_container .main_content .data .table_body_user .buttons button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(68, 68, 68);
+}
+.admin_main_container .BookReport {
+  display: flex;
+  position: relative;
+  top: 20px;
+  left: 10px;
+  width: 300px;
+  height: 30px;
+  justify-items: center;
+  align-items: center;
+  border-radius: 0px 5px 5px 0px;
+}
+.admin_main_container .BookReport p {
+  position: relative;
+  text-align: center;
+  width: 20px;
+  height: 25px;
+  font-size: 16px;
+  padding-right: 10px;
+  padding-left: 10px;
+  z-index: 9;
+  padding-top: 5px;
+  background-color: rgba(231, 231, 231, 0.455);
+}
+.admin_main_container .BookReport input {
+  position: relative;
+  z-index: 1;
+  width: 150px;
+  height: 100%;
+  outline: none;
+  background-color: rgba(231, 231, 231, 0.455);
+}
+.admin_main_container .BookReport .start {
+  border: none;
+}
+.admin_main_container .BookReport .end {
+  border: none;
+}
+.admin_main_container .BookReport .export {
+  width: 100%;
+  height: 100%;
+  margin-left: 5px;
+}
+.admin_main_container .BookReport .export button {
+  display: block;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: rgb(104, 116, 241);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+  text-align: center;
+  padding-top: 8px;
+  padding-left: 15px;
+}
+.admin_main_container .BookReport .export .button:hover {
+  color: black;
+  cursor: pointer;
+  background-color: rgb(39, 121, 235);
+}
 
 .Sheet {
   position: absolute;
@@ -581,6 +957,77 @@ body {
   border: none;
   color: white;
   border-radius: 5px 5px 5px 5px;
+}
+
+.adminUserSheet {
+  display: none;
+  width: 400px;
+  height: 250px;
+  background-color: rgb(249, 249, 249);
+  position: absolute;
+  z-index: 100;
+  top: 50px;
+  left: 400px;
+  border-radius: 15px 15px 0px 0px;
+}
+.adminUserSheet .close {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(35, 149, 255);
+  border-radius: 15px 15px 0px 0px;
+}
+.adminUserSheet .close .closeBtn {
+  font-size: 20px;
+  position: relative;
+  left: 360px;
+  top: 7px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  color: white;
+}
+.adminUserSheet .title {
+  display: grid;
+  width: 200px;
+  height: 70px;
+  margin-left: 30px;
+}
+.adminUserSheet .content {
+  position: relative;
+  width: 350px;
+  height: 40px;
+  margin-left: 30px;
+  top: -20px;
+}
+.adminUserSheet .sheet_content {
+  width: 100%;
+  height: 100%;
+}
+.adminUserSheet .sheet_content input {
+  margin-left: 30px;
+  width: 327px;
+  height: 25px;
+  border: none;
+  border-radius: 7px 7px 7px 7px;
+}
+.adminUserSheet .sheet_content div .reset {
+  width: 327px;
+  height: 25px;
+  margin-left: 30px;
+  margin-top: 10px;
+  color: white;
+  background-color: rgb(104, 116, 241);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
+}
+.adminUserSheet .sheet_content div .create {
+  width: 327px;
+  height: 25px;
+  margin-left: 30px;
+  margin-top: 10px;
+  color: white;
+  background-color: rgb(104, 116, 241);
+  border-radius: 7px 7px 7px 7px;
+  border: none;
 }
 
 .backgroundStyle {

@@ -2,10 +2,9 @@ import { useQuery, gql } from "@apollo/client";
 
 //admin query
 
-
 export const GET_ALL_USERS_WITH_ADMIN = gql`
-  query getAllUsersWithAdmin{
-    Users{
+  query getAllUsersWithAdmin {
+    Users {
       userid
       username
       password
@@ -13,10 +12,10 @@ export const GET_ALL_USERS_WITH_ADMIN = gql`
       wallet
     }
   }
-`
+`;
 export const GET_SINGLE_USER_WITH_ADMIN = gql`
-  query getSingleUserWithAdmin($email:String!){
-    SingleUser(email:$email){
+  query getSingleUserWithAdmin($column: String!, $info: String!) {
+    SingleUser(column: $column, info: $info) {
       userid
       username
       password
@@ -24,9 +23,7 @@ export const GET_SINGLE_USER_WITH_ADMIN = gql`
       wallet
     }
   }
-
-
-`
+`;
 
 export const GET_ALL_ADMIN_USER = gql`
   query getAllAdminUser {
@@ -43,8 +40,8 @@ export const GET_ALL_ADMIN_USER = gql`
   }
 `;
 export const GET_SINGLE_ADMIN_USER = gql`
-  query getSingleAdminUser($email: String!) {
-    SingleAdminUser(email: $email) {
+  query getSingleAdminUser($column: String!, $info: String!) {
+    SingleAdminUser(column: $column, info: $info) {
       status
       message
       data {
@@ -106,22 +103,40 @@ export const GET_SINGLE_BORROW_RECORDS_WITH_ADMIN = gql`
   }
 `;
 
+export const GET_BOOK_WITH_PRODUCTIONDATE = gql`
+  query BooksWithProductionDate($start: String!, $end: String!) {
+    BooksWithProductionDate(start: $start, end: $end) {
+      status
+      message
+      data {
+        bookid
+        bookname
+        bookauthor
+        productiondate
+        bookstatus
+        borrowcount
+        bookcategory
+        bookimage
+      }
+    }
+  }
+`;
 
 //userweb query
 
 export const USER_LOGIN = gql`
-  query userLogin($email:String!,$password:String!){
-    UserLogin(email:$email,password:$password){
+  query userLogin($email: String!, $password: String!) {
+    UserLogin(email: $email, password: $password) {
       status
       message
-      data{
+      data {
         userid
         username
         email
         password
         wallet
       }
-      jwt    
+      jwt
     }
   }
 `;

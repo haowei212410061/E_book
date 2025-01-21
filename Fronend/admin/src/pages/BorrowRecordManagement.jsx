@@ -53,12 +53,14 @@ function BorrowRecordManagement() {
       />
 
       <section className="main_content">
-        <AdminTitle title={"Borrow Management"} />
+        <AdminTitle title={"Borrow Record Management"} />
         <Filter
           defaultValue={"userid"}
           options={columns}
           ShouldDisplay={"none"}
           getSingleData={getSingleBorrowRecord}
+          reloadFn={getAllBorrowRecord}
+          exportDisplay={"none"}
           
         />
         <table style={style} className="data">

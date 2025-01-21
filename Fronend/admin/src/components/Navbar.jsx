@@ -36,10 +36,10 @@ function Navbar({ email, username, image }) {
         <div className="list">
           <h4>使用者管理</h4>
           <ul>
-            <li>
+            <li onClick={()=> navigate("/admin")}>
               <i className="fa-solid fa-hammer"></i>AdminUser Management
             </li>
-            <li>
+            <li onClick={()=> navigate("/user")}>
               <i className="fa-solid fa-user"></i>User Management
             </li>
           </ul>
@@ -49,10 +49,10 @@ function Navbar({ email, username, image }) {
             <i className="fa-solid fa-file"></i> 報表管理
           </h4>
           <ul>
-            <li>
+            <li onClick={()=> navigate("/bookReport")}>
               <i className="fa-solid fa-file"></i>Book Report
             </li>
-            <li>
+            <li onClick={()=> navigate("/borrowReport")}>
               <i className="fa-solid fa-file"></i>Borrow Records Report
             </li>
           </ul>

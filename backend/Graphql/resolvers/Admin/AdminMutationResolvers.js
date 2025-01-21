@@ -1,7 +1,7 @@
 const { ApolloError } = require("apollo-server-express")
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
-const ADMIN_SECRET_KEY = process.env.ADMIN_USER_JWT_SECRET
+const ADMIN_SECRET_KEY = "75a3b5e32a7f0e39de19e3ee97ai28ca6m10c753740fn1f3a7849ee26107cbe4faaa"
 const AdminMutationResolvers = {
     Mutation: {
         AdminUserLogin:async (parent,{email,password},{db})=>{

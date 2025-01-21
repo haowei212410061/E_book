@@ -14,6 +14,7 @@ export function useBorrowRecordAPI() {
       const { data } = await client.query({
         query: GET_ALL_BORROW_RECORD_WITH_ADMIN,
       });
+      dispatch(setBorrowRecord(data.BorrowRecords.data))
       return data.BorrowRecords.data;
     } catch (error) {
       console.log(error);
