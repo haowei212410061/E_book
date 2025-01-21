@@ -36,10 +36,16 @@ function BorrowRecordReport() {
         });
 
         const res = data.SingleBorrowRecord.data;
-        const fields = Object.keys(res[0]).filter(
-          (item) => item !== "__typename"
-        );
-        JsonToCsv(res, fields, title);
+        if(res.length === 0){
+            warning("資料為空")
+            return
+        }else{
+            const fields = Object.keys(res[0]).filter(
+                (item) => item !== "__typename"
+              );
+              JsonToCsv(res, fields, "BorrowReport");
+        }
+        
       } catch (error) {
         console.error("Error fetching data or generating CSV:", error);
       }

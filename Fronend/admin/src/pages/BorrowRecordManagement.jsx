@@ -34,8 +34,8 @@ function BorrowRecordManagement() {
     display: "flex",
     gap: "15px",
     marginTop: "10px",
-    marginLeft:"200px",
-  }
+    marginLeft: "200px",
+  };
 
   useEffect(() => {
     getAllBorrowRecord().then((data) => {
@@ -76,7 +76,7 @@ function BorrowRecordManagement() {
           <tbody className="table_body_borrow">
             {borrowRecord.length === 0 ? (
               <tr>
-                <td style={{textAlign:"center"}}>no data...</td>
+                <td style={{ textAlign: "center" }}>no data...</td>
               </tr>
             ) : (
               <DataList
@@ -87,14 +87,12 @@ function BorrowRecordManagement() {
               />
             )}
             <ControlPageBtn
-          add={addPageNumber(borrowRecord, pageNumber, setPageNumber)}
-          reduce={reducePageNumber(pageNumber, setPageNumber)}
-          buttonStyle={buttonStyle}
-        />
+              add={addPageNumber(borrowRecord, pageNumber, setPageNumber)}
+              reduce={reducePageNumber(pageNumber, setPageNumber)}
+              buttonStyle={buttonStyle}
+            />
           </tbody>
-          
         </table>
-        
       </section>
     </div>
   );
