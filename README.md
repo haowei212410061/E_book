@@ -12,7 +12,7 @@
 
 ---
 ## **URL**
-   - [URL](https://e-book-l4zhkv4g4-haowei212410061s-projects.vercel.app/main)
+   - [URL](https://e-book-l4zhkv4g4-haowei212410061s-projects.vercel.app/)
 ---
 
 ## **測試帳號**
