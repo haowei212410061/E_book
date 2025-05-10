@@ -14,7 +14,12 @@
 ## **URL**
    - [URL](https://e-book-l4zhkv4g4-haowei212410061s-projects.vercel.app/main)
 ---
-
+---
+## **demo**
+   - [URL1](https://youtu.be/kzvxQ2pIadY)
+   - [URL2](https://youtu.be/4spjV32gkLU)
+   - [URL3](https://youtu.be/FeJMUc_-j-Y)
+---
 ## **測試帳號**
    - 帳號:Admin002@gmail.com
    - 密碼:987654321
