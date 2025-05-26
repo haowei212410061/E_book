@@ -12,7 +12,7 @@
 
 ---
 ## **URL**
-   - [URL]([https://e-book-l4zhkv4g4-haowei212410061s-projects.vercel.app/main](https://e-book-pearl.vercel.app/))
+   - [Demo 網站](https://e-book-pearl.vercel.app/)
 ---
 ---
 ## **demo**
