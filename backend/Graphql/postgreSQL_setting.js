@@ -7,6 +7,8 @@ const CLOUD_POSTGRES_USER="postgres.csutzncxyvmaoeujpols"
 const CLOUD_POSTGRES_PASSWORD="cdsdweeecdsd1332"
 const CLOUD_POSTGRES_DATABASE="postgres"
 
+const NEW_POSTGRES_PASSWORD = "JS@imxHVTn2tP#s"
+
 
 const CLOUD_POSTGRES = new Pool({
   connectionString:CLOUD_POSTGRESQL_URL,
